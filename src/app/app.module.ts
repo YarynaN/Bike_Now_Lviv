@@ -7,7 +7,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import { BikeDetailsComponent } from './components/bike-details/bike-details.component';
+import { SearchPageComponent } from './components/search-page/search-page.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { BikeDetailsComponent } from './components/bike-details/bike-details.com
     LandingPageComponent,
     LoginComponent,
     MyAccountComponent,
-    BikeDetailsComponent
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
