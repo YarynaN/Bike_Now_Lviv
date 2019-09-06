@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../auth.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   tryRegister(value) {
-    this.authService.doRegister(value)
+    this.authService.doRegister(value.email, value.password)
       .then(res => {
         console.log(res);
         this.errorMessage = '';
@@ -29,10 +29,25 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  trySignIn(value) {
+    this.authService.doSignIn(value.email, value.password)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = '';
+        this.successMessage = 'You signed in successfully';
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = '';
+      });
+  }
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
     });
   }
 }
+
