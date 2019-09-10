@@ -20,17 +20,8 @@ export class DatabaseService {
   }
 
   getItems(wheels: string = '', keyword: string = ''): Observable<any[]> {
-    return this.usersData
-      .snapshotChanges()
-      .pipe(
-        map(changes =>
-          changes
-            .map(item => ({id: item.payload.key, ...item.payload.val()}))
-            .filter(item => (item.shortContent.includes(keyword) || item.title.includes(keyword))
-              && (item.wheels === wheels || wheels === '')
-            )
-        )
-      );
+    // @ts-ignore
+    return this.usersData;
   }
   getWheels() {
     return this.wheels;
