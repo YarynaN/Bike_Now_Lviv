@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+  <!-- Firechat -->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
+  <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
+
+  <!-- Custom CSS -->
+  <style>
+    #firechat-wrapper {
+      height: 475px;
+      max-width: 325px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      margin: 50px auto;
+      text-align: center;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 5px 25px #666;
+      -moz-box-shadow: 0 5px 25px #666;
+      box-shadow: 0 5px 25px #666;
+    }
+  </style>
+</head>
+
+<!--
+  Example: Anonymous Authentication
+  This example uses Firebase Simple Login to create "anonymous" user sessions in Firebase,
+  meaning that user credentials are not required, though a user has a valid Firebase
+  authentication token and security rules still apply.
+  Requirements: in order to use this example with your own Firebase, you'll need to do the following:
+    1. Apply the security rules at https://github.com/firebase/firechat/blob/master/rules.json
+    2. Enable the "Anonymous" authentication provider in Forge
+    3. Update the URL below to reference your Firebase
+    4. Update the room id for auto-entry with a public room you have created
+ -->
+<body>
+<table>
+  <tr>
+    <td>Id: </td>
+    <td><input type="text" name="id" id="user_id" /></td>
+  </tr>
+  <tr>
+    <td>User Name: </td>
+    <td><input type="text" name="user_name" id="user_name" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <input type="button" value="Save" onclick="save_user();" />
+      <input type="button" value="Update" onclick="update_user();" />
+      <input type="button" value="Delete" onclick="delete_user();" />
+    </td>
+  </tr>
+</table>
+
+
+<table id="tbl_users_list" border="1">
+  <tr>
+    <td>#ID</td>
+    <td>NAME</td>
+  </tr>
+</table>
+
+<script>
+    var config = {
+        apiKey: "AIzaSyBOVaCDXt3F8jLICR1vZc83uRbwoE0pSHs",
+        authDomain: "bikenowlviv.firebaseapp.com",
+        databaseURL: "https://bikenowlviv.firebaseio.com",
+        projectId: "bikenowlviv",
+        storageBucket: "bikenowlviv.appspot.com",
+        messagingSenderId: "330809534181",
+        appId: "1:330809534181:web:cfdefc1ec30bc273"
+    };
+    firebase.initializeApp(config);
+    var tblUsers = document.getElementById('tbl_users_list');
+    var databaseRef = firebase.database().ref('users/');
+    var rowIndex = 1;
+    databaseRef.once('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var childKey = childSnapshot.key;
+            var childData = childSnapshot.val();
+            var row = tblUsers.insertRow(rowIndex);
+            var cellId = row.insertCell(0);
+            var cellName = row.insertCell(1);
+            cellId.appendChild(document.createTextNode(childKey));
+            cellName.appendChild(document.createTextNode(childData.user_name));
+            rowIndex = rowIndex + 1;
+        });
+    });
+    function save_user(){
+        var user_name = document.getElementById('user_name').value;
+        var uid = firebase.database().ref().child('users').push().key;
+        var data = {
+            user_id: uid,
+            user_name: user_name
+        }
+        var updates = {};
+        updates['/users/' + uid] = data;
+        firebase.database().ref().update(updates);
+        alert('The user is created successfully!');
+        reload_page();
+    }
+    function update_user(){
+        var user_name = document.getElementById('user_name').value;
+        var user_id = document.getElementById('user_id').value;
+        var data = {
+            user_id: user_id,
+            user_name: user_name
+        }
+        var updates = {};
+        updates['/users/' + user_id] = data;
+        firebase.database().ref().update(updates);
+        alert('The user is updated successfully!');
+        reload_page();
+    }
+    function delete_user(){
+        var user_id = document.getElementById('user_id').value;
+        firebase.database().ref().child('/users/' + user_id).remove();
+        alert('The user is deleted successfully!');
+        reload_page();
+    }
+    function reload_page(){
+        window.location.reload();
+    }
+</script>
+
+</body>
+</html>
