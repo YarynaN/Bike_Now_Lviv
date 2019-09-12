@@ -22,6 +22,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PersonalInfoComponent } from './components/my-account/personal-info/personal-info.component';
+import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-info.component';
+import { HistoryComponent } from './components/my-account/history/history.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersonalInfoComponent,
+    BikesInfoComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserAnimationsModule,
