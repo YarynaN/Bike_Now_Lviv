@@ -1,10 +1,10 @@
-div {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border-color: green;
+// div {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   border-color: green;
 
-}
+// }
 
 .example-container {
   display: flex;
@@ -17,65 +17,36 @@ div {
   width: 80%;
 }
 
-mat-card-title-group {
+mat-card {
   display: flex;
   justify-content: center;
 }
-
 
 .container {
   background-image: url("../../../../assets/myAccount-bg.jpeg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  // height: 100vh;
-
-  .photocard {
-    background-color: white;
-    height: 200px;
-    width: 200px;
-    border: 2px solid gray;
-    border-radius: 50%;
-
-    img {
-      height: 250px;
-      width: 250px;
-    }
-  }
-
-  .name {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .data {
-
-    button {
-      // margin: 20px;
-      // height: 40px;
-      // width: 100px;
-      border: 2px solid gray;
-      font-weight: bold;
-      background-color: lightgray;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: lightslategray;
-      color: white;
-    }
-  }
-
-  .go-back {
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  .go-back:hover {
-    background-color: lightgrey;
-    color: black;
-  }
+  height: 100vh;
 }
 
+.photocard {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+button {
+  border: 1px solid gray;
+  font-weight: bold;
+  background-color: lightgray;
+  cursor: pointer;
+  margin-top: 150px;
+}
+
+button:hover {
+  background-color: lightslategray;
+  color: white;
+}
