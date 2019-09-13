@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,7 @@ export class PersonalInfoComponent implements OnInit {
     photo: '../../../../assets/my-account-photo.jpg',
     email: 'lucky@gmail.com',
     phone: '+380359874638',
-    birthday: '29/08/2009',
+    birthday: new FormControl(new Date('08/29/2001')),
     height: '165 cm',
   };
 
