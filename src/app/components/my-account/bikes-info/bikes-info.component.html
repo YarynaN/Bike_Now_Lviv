@@ -1,1 +1,49 @@
-<p>bikes-info works!</p>
+<p style="display:none">bikes-info works!</p>
+
+<section  class="container">
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Brand" value="{{myBike[0].brand}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Model" value="{{myBike[0].model}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Category" value="{{myBike[0].category}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Size" value="{{myBike[0].size}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Color" value="{{myBike[0].color}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Weight" value="{{myBike[0].weight}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Frame" value="{{myBike[0].frame}}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Speeds" value="{{myBike[0].speeds}}">
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput placeholder="Brakes"> -->
+      <mat-label>Brakes</mat-label>
+      <mat-select [value]="myBike[0].brakes">
+        <mat-option *ngFor="let MyBikeBrakes of brakes" [value]="MyBikeBrakes.value">
+          {{MyBikeBrakes.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput placeholder="Wheels diameter"> -->
+      <mat-label>Wheels diameter</mat-label>
+      <mat-select  [value]="myBike[0].diameter_wheels">
+        <mat-option *ngFor="let MyBikeWheels of diameterWheels" [value]="MyBikeWheels.value">
+          {{MyBikeWheels.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button>Save</button>
+  </div>
+</section>

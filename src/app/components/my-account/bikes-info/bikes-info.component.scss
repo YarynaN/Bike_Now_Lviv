@@ -1,0 +1,51 @@
+// div {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   border-color: green;
+// }
+  
+.example-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: beige;
+}
+  
+.example-container > * {
+  width: 80%;
+}
+
+mat-card {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-image: url("../../../../assets/myAccount-bg.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.photocard {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+button {
+  border: 1px solid gray;
+  font-weight: bold;
+  background-color: lightgray;
+  cursor: pointer;
+  margin-top: 150px;
+}
+
+button:hover {
+  background-color: lightslategray;
+  color: white;
+}  
