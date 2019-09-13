@@ -1,1 +1,29 @@
-<p>personal-info works!</p>
+<p style="display:none">personal-info works!</p>
+
+<section  class="container">
+  <mat-card-title-group>
+    <img mat-card-lg-image src="{{ dataUser.photo }}" alt="profile-photo" class="photocard" />
+    <!-- <mat-card-title class="name">{{ dataUser.name }} {{ dataUser.surname }}</mat-card-title> -->
+  </mat-card-title-group>
+
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Surname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone number">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Date of birth">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Your height">
+    </mat-form-field>
+  </div>
+</section>
