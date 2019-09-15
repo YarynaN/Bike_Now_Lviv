@@ -2,32 +2,31 @@
 
 <section  class="container">
   <mat-card>
-    <img mat-card-lg-image src="{{ dataUser.photo }}" alt="profile-photo" class="photocard" />
-    <!-- <mat-card-title class="name">{{ dataUser.name }} {{ dataUser.surname }}</mat-card-title> -->
+    <img mat-card-lg-image src="{{ personalInfoData.photo }}" alt="profile-photo" class="photocard" />
   </mat-card>
 
   <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Name" value="{{dataUser.name}}">
+      <input matInput placeholder="Name" name="name" [(ngModel)]="personalInfoData.name"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Surname" value="{{dataUser.surname}}">
+      <input matInput placeholder="Surname" name="surname" [(ngModel)]="personalInfoData.surname"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email" value="{{dataUser.email}}">
+      <input matInput placeholder="Email" name="email" [(ngModel)]="personalInfoData.email"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Phone number" value="{{dataUser.phone}}">
+      <input matInput placeholder="Phone number" name="phone" [(ngModel)]="personalInfoData.phone"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Date of birth(choose a date)" [value]="dataUser.birthday.value">
+      <input matInput [matDatepicker]="picker" placeholder="Date of birth(choose a date)" name="birthday" [(ngModel)]="personalInfoData.birthday.value"/>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Your height in cm" value="{{dataUser.height}}">
+      <input matInput placeholder="Your height in cm" name="height" [(ngModel)]="personalInfoData.height"/>
     </mat-form-field>
-    <button mat-raised-button>Save</button>
+    
   </div>
-  
+  <button mat-raised-button (click)="save()">Save</button>
 </section>

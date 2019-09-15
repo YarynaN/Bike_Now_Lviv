@@ -18,6 +18,7 @@ const routes: Routes = [
     path: 'my-account',
     component: MyAccountComponent,
     children: [
+      { path: '', redirectTo: '/my-account/(outlet-my-account:personal-info)', pathMatch: 'full' },
       { path: 'personal-info', component: PersonalInfoComponent, outlet: 'outlet-my-account' },
       { path: 'bikes-info', component: BikesInfoComponent, outlet: 'outlet-my-account' },
       { path: 'history', component: HistoryComponent, outlet: 'outlet-my-account' },
