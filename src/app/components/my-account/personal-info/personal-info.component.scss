@@ -1,16 +1,7 @@
-// div {
-//   height: 100%;
-//   margin: 0;
-//   padding: 0;
-//   border-color: green;
-
-// }
-
 .example-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background-color: beige;
 }
 
 .example-container > * {
@@ -20,6 +11,11 @@
 mat-card {
   display: flex;
   justify-content: center;
+}
+
+mat-form-field {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0px 20px;
 }
 
 .container {
@@ -43,7 +39,9 @@ button {
   font-weight: bold;
   background-color: lightgray;
   cursor: pointer;
-  margin-top: 150px;
+  margin: 20px 10%;
+  width: 200px;
+  border-radius: 0;
 }
 
 button:hover {

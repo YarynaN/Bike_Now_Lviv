@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { Router } from '@angular/router';
+import { PersonalInfoService } from '../../../services/personal-info.service';
+import { PersonalInfo } from '../../../models/personal-info.model';
 
 @Component({
   selector: 'app-personal-info',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class PersonalInfoComponent implements OnInit {
 
-  dataUser = {
+  // temp mockup personal info data
+  dataUser: PersonalInfo = {
     name: 'Natalja',
     surname: 'Kuziv',
     photo: '../../../../assets/my-account-photo.jpg',
@@ -19,9 +21,13 @@ export class PersonalInfoComponent implements OnInit {
     height: '165 cm',
   };
 
-  constructor(private router: Router) { }
+  personalInfoData: PersonalInfo = this.dataUser;
 
-  ngOnInit() {
+  constructor(private personalInfoService: PersonalInfoService) { }
+
+  ngOnInit() {}
+
+  save(): void {
+    this.personalInfoService.save(this.personalInfoData);
   }
-
 }

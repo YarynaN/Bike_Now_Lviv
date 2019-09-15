@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,18 +8,9 @@ import { Router } from '@angular/router';
 })
 export class MyAccountComponent implements OnInit {
 
-  
+  constructor(private router: Router) { }
 
-  
-  constructor(
-    private location: Location,
-    private router: Router
-  ) { }
-
-  
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   secondaryNav(path) {
     this.router.navigate([{ outlets: {
