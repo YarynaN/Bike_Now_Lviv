@@ -28,6 +28,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
+import {MatCardModule} from '@angular/material';
 
 firebase.initializeApp(environment.firebase);
 
@@ -52,6 +53,8 @@ firebase.initializeApp(environment.firebase);
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    MatCardModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
