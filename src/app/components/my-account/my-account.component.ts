@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService  } from '../../services/database.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
