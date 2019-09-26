@@ -43,7 +43,7 @@ export class DatabaseService {
 
     this.usersData.update(key, { name, surname, photo, email, phone, birthday, height });
     // this.usersData.update({name, surname, photo, email, phone, birthday, height });
-    console.log('This was save to the Firebase Database', {name, surname, photo, email, phone, birthday, height});
+    console.log('This was saved to the Firebase Database', {name, surname, photo, email, phone, birthday, height});
   }
 
   getUserItemById(id: string) {
