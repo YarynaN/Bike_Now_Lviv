@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { DatabaseService  } from '../../services/database.service';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
@@ -10,14 +7,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MyAccountComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  ngOnInit() {}
-
-  secondaryNav(path) {
-    this.router.navigate([{ outlets: {
-      sidebar: [path]
-    }}]);
+  ngOnInit() {
   }
 
 }
