@@ -15,7 +15,6 @@ export class BikeInfoService {
     this.bikesData = db.list('/usersData');
   }
 
-
   updateUserBikeItem( key: string,  model: string  , brand: string , categories: string , sizes: string ,
                       color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
     const bike = {
@@ -29,16 +28,13 @@ export class BikeInfoService {
       bike_brakes : brakes,
       bike_Wheels : diameterWheels
     };
-    // const dynamicProperty = model;
     const newBikeKey = firebase.database().ref().child('/bikes').push().key;
     const dynamicProperty = newBikeKey;
     this.bikesData.update(key, { bikes : {   [dynamicProperty] : bike    }});
-    // console.log('This was saved to the Firebase Database', {model });
   }
   pushUserBikeItem( key: string,  model: string  , brand: string , categories: string , sizes: string ,
                     color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
-    // Get a key for a new Bike.
-    // tslint:disable-next-line:prefer-const
+
     const newBikeKey = firebase.database().ref().child('/bikes').push().key;
     const dynamicProperty = newBikeKey;
     const bike = {
@@ -53,10 +49,8 @@ export class BikeInfoService {
       bike_brakes : brakes,
       bike_Wheels : diameterWheels
     };
-    // const dynamicProperty = model;
 
     this.bikesData.update(key, { bikes : {   [dynamicProperty] : bike    }});
-    // console.log('This was saved to the Firebase Database', {model });
   }
 
   getBikesById(idUser: string, idBike) {
@@ -67,8 +61,6 @@ export class BikeInfoService {
   }
 
   save(data: BikeInfo): boolean {
-    // Save bike info data
-    // console.log('Data saved: ', data);
     return true;
   }
 }
