@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {AuthService} from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -19,10 +20,10 @@ export class LoginComponent implements OnInit {
     this.authService.doSignIn(value.email, value.password)
       .then(res => {
         console.log(res);
-        console.log('You signed in successfully');
+        this.router.navigate(['']);
       }, err => {
         console.log(err);
-        console.log(err.message);
+        alert('Try another combination or register please.');
       });
   }
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {MustMatch} from '../../helpers/validation';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {MustMatch} from '../../helpers/validation';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -20,10 +21,10 @@ export class RegisterComponent implements OnInit {
     this.authService.doRegister(value.email, value.password)
       .then(res => {
         console.log(res);
-        console.log('Your account has been created');
+        this.router.navigate(['my-account/personal-info']);
       }, err => {
         console.log(err);
-        console.log(err.message);
+        alert('Sorry, we could nor register you. Try again please.');
       });
   }
 
