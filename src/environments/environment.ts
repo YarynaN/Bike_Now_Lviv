@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'API_KEY',
+    apiKey: 'AIzaSyBOVaCDXt3F8jLICR1vZc83uRbwoE0pSHs\n',
     authDomain: 'bikenowlviv.firebaseapp.com',
     databaseURL: 'https://bikenowlviv.firebaseio.com',
     projectId: 'bikenowlviv',
