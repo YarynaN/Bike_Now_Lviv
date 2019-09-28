@@ -19,7 +19,7 @@ export class BikeInfoService {
                       color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
     const bike = {
       bike_brand: brand,
-      bike_categorie: categories,
+      bike_category: categories,
       bike_size  : sizes,
       bike_color : color,
       bike_weight : weight,
