@@ -18,6 +18,7 @@ export class BikeInfoService {
   updateUserBikeItem( key: string,  model: string  , brand: string , categories: string , sizes: string ,
                       color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
     const bike = {
+      bike_model: model,
       bike_brand: brand,
       bike_category: categories,
       bike_size  : sizes,
