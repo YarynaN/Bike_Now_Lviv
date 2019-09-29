@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 /* Angular Flex Layout */
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -28,7 +29,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
-import {MatCardModule} from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { AuthGuardService } from './services/auth-guard.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -53,9 +55,9 @@ firebase.initializeApp(environment.firebase);
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatCardModule,
-    MatCardModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

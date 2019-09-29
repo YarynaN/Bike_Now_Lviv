@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -12,18 +13,18 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
 
   }
 
   trySignIn(value) {
     this.authService.doSignIn(value.email, value.password)
       .then(res => {
-        console.log(res);
         this.router.navigate(['']);
       }, err => {
-        console.log(err);
-        alert('Try another combination or register please.');
+        this.snackBar.open('Try another combination or register please.', 'ok', {
+          duration: 2000,
+        });
       });
   }
 
