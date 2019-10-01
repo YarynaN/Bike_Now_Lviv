@@ -1,5 +1,3 @@
-<p style="display:none">personal-info works!</p>
-
 <section  class="container">
   <mat-card>
     <img mat-card-lg-image src="{{ personalInfoData.photo }}" alt="profile-photo" class="photocard" />
@@ -26,7 +24,6 @@
     <mat-form-field>
       <input matInput placeholder="Your height in cm" name="height" [(ngModel)]="personalInfoData.height"/>
     </mat-form-field>
-    
   </div>
   <button mat-raised-button (click)="save()">Save</button>
 </section>

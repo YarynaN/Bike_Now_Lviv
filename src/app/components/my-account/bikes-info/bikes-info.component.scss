@@ -1,38 +1,53 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-}
-  
-.example-container > * {
-  width: 80%;
-}
-
-mat-form-field {
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 0px 20px;
-}
-
-.container {
+.container { 
   background-image: url("../../../../assets/myAccount-bg.jpeg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  background-attachment: fixed;
+  min-height: 100%;
 }
 
-button {
-  border: 1px solid gray;
+.mat-panel-title, .mat-expansion-panel {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.mat-expansion-panel {
+  margin: 0% 10%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
+.mat-expansion-panel, .example-container > * {
+  width: 80%;
+}
+
+.mat-form-field {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0px 20px;
+}
+
+button.mat-raised-button {
   font-weight: bold;
   background-color: lightgray;
   cursor: pointer;
   margin: 20px 10%;
-  width: 200px;
-  border-radius: 0;
 }
 
-button:hover {
+button.mat-raised-button:hover {
   background-color: lightslategray;
   color: white;
 }  
+
+button.mat-fab {
+  font-weight: 50;
+  font-size: 50px;
+  position: fixed;
+  right: 3%;
+  bottom: 5%;
+  background-color: rgb(41, 41, 167);
+}
