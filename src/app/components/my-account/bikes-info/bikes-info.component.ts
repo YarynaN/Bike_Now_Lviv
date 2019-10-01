@@ -16,6 +16,7 @@ import { BikeInfoService } from '../../../services/bike-info.service';
   styleUrls: ['./bikes-info.component.scss']
 })
 export class BikesInfoComponent implements OnInit {
+  activeBike = 0;
 
   brands: BrandsBikes [] = [
     {value: 'specialized-0', viewValue: 'Specialized'},
@@ -76,10 +77,10 @@ export class BikesInfoComponent implements OnInit {
     {value: '29"-2', viewValue: '29"'}
   ];
 
-  myBike = [
+  myBikes = [
     {
       brand: 'cube-5',
-      model: 'Access WLS Race',
+      model: 'Access WLS Race 1',
       categories: 'mountainbike(MTB)-0',
       sizes: 'S (16" - 17" height 161 - 172 cm)-1',
       color: 'black-blue-green',
@@ -99,8 +100,23 @@ export class BikesInfoComponent implements OnInit {
   }
 
   save(): void {
-    console.log('function Save bike data')
-    // this.bikeInfoService.save(this.bikeData);
+    console.log('function Save bike data');
   }
 
+  getTitleBike(bike) {
+    const brand = this.brands.find(item => item.value === bike.brand);
+    const brandValue = brand ? brand.viewValue : '';
+    const model = bike.model || '';
+    return `${brandValue} ${model}`;
+  }
+
+  addBikePanel() {
+    this.myBikes.push({brakes: "", brand: "", categories: "", color: "", diameter_wheels: "", frames: "", model: "", sizes: "", speeds: "", weight: ""});
+    this.setActiveBike(this.myBikes.length - 1);
+    console.log(this.myBikes);
+  };
+
+  setActiveBike(index: number) {
+    this.activeBike = index;
+  }
 }
