@@ -7,10 +7,9 @@
   min-height: 100%;
 }
 
-mat-card {
+.profile-photo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .photocard {

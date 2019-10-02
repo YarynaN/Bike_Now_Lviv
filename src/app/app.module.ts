@@ -13,7 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* FormsModule */
-import { ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -53,6 +53,7 @@ firebase.initializeApp(environment.firebase);
   imports: [
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FlexLayoutModule,
