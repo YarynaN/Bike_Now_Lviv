@@ -1,0 +1,18 @@
+ section{
+    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),url("../../../assets/404_page_img.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 110vh;
+  }
+ section div:nth-child(1){
+    color: white;
+    font-size: 5rem;
+  }
+  section div:nth-child(1){
+    margin-top: 3rem;
+  }
+  section div:nth-child(2){
+    width: 70%;
+  }
+
