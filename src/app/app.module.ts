@@ -31,6 +31,7 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -42,7 +43,8 @@ firebase.initializeApp(environment.firebase);
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

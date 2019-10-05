@@ -7,9 +7,11 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
+  { path: 'main-page', component: MainPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuardService] },
