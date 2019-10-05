@@ -57,12 +57,13 @@ body, html {
 .caption span.border {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   text-align: center;
-  background-color: #3f51b5;
+  background: rgba(0,111,253, 0.5);
   color: #fff;
-  padding: 2px;
+  padding: 5px;
   font-size: 2em;
   letter-spacing: 1px;
   word-wrap: break-word;
+  font-weight: 500;
 }
 
 h3 {
@@ -81,7 +82,6 @@ h3 {
 .top-div {
    color: #777;
   background-color:white;
-  text-align:center;
   padding:50px 80px;
   text-align: justify;
 }
@@ -89,7 +89,6 @@ h3 {
 .middle-div{
   color:#ddd;
   background-color:#282E34;
-  text-align:center;
   padding:50px 80px;
   text-align: justify;
 }
@@ -97,7 +96,6 @@ h3 {
 .bottom-div {
   color:#ddd;
   background-color:#282E34;
-  text-align:center;
   padding:50px 80px;
   text-align: justify;
 }
@@ -111,14 +109,15 @@ h3 {
 .slogan {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   text-align: center;
-  background-color: #3f51b5;
+  background: rgba(0, 111, 253, 0.5);
   color: #fff;
-  padding: 2px;
+  padding: 5px 5px;
   font-size: 25px;
   letter-spacing: 1px;
   word-wrap: break-word;
+  line-height: 1.7em;
+  font-weight: 500;
 }
-
 
 .logo{
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -142,7 +141,6 @@ h3 {
   margin: 0px;
   padding: 3px;
 }
-
 
 #logo-text3{
   color: white;
