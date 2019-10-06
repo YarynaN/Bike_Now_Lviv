@@ -19,7 +19,6 @@ export class BikeInfoService {
   }
   updateUserBikeItem( userId: string, bikeId: string,  model: string  , brand: string , categories: string , sizes: string ,
                       color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
-    const authorizeduserId = this.userId;
     const bike = {
       bike_model: model,
       bike_brand: brand,
@@ -34,6 +33,8 @@ export class BikeInfoService {
     };
     let key;
     // key = bikeId + '/bikes/';
+    const authorizeduserId = this.userId;
+    if (bikeId === undefined) {bikeId = authorizeduserId; }
     key = authorizeduserId + '/bikes/';
     this.bikesData.update(key, { [bikeId] : bike});
   }

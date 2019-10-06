@@ -32,7 +32,7 @@ export class PersonalInfoComponent implements OnInit {
         console.log(globalobj);
         this.dataUser.name = this.checkundef(globalobj.name);
         this.dataUser.surname = this.checkundef(globalobj.surname);
-        this.dataUser.photo = this.checkundef(globalobj.photo);
+        // this.dataUser.photo = this.checkundef(globalobj.photo);
         this.dataUser.email = this.checkundef(globalobj.email);
         this.dataUser.phone = this.checkundef(globalobj.phone);
         // this.dataUser.birthday = this.checkundef(globalobj.birthday);

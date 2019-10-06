@@ -8,22 +8,22 @@
           {{ getTitleBike(bike) }}
         </mat-panel-title>
       </mat-expansion-panel-header>
-    
+
       <div class="example-container">
         <mat-form-field>
           <mat-label>Brands</mat-label>
-          <mat-select [value]="bike.brand">
-            <mat-option *ngFor="let brandsBikes of brands" [value]="brandsBikes.value">
+          <mat-select [value]="bike.brand"  [(ngModel)]="bikeData.brand">
+            <mat-option *ngFor="let brandsBikes of brands" [value]="brandsBikes.value" >
               {{brandsBikes.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Model" value="{{bike.model}}">
+          <input matInput placeholder="Model" value="{{bike.model}}" [(ngModel)]="bikeData.model">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Categories</mat-label>
-          <mat-select [value]="bike.categories">
+          <mat-select [value]="bike.categories" [(ngModel)]="bikeData.categories">
             <mat-option *ngFor="let categoriesBikes of categories" [value]="categoriesBikes.value">
               {{categoriesBikes.viewValue}}
             </mat-option>
@@ -31,40 +31,40 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Sizes</mat-label>
-          <mat-select [value]="bike.sizes">
+          <mat-select [value]="bike.sizes" [(ngModel)]="bikeData.sizes">
             <mat-option *ngFor="let sizesBikes of sizes" [value]="sizesBikes.value">
               {{sizesBikes.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Color" value="{{bike.color}}">
+          <input matInput placeholder="Color" value="{{bike.color}}" [(ngModel)]="bikeData.color">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Weight" value="{{bike.weight}}">
+          <input matInput placeholder="Weight" value="{{bike.weight}}" [(ngModel)]="bikeData.weight">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Frames</mat-label>
-          <mat-select [value]="bike.frames">
+          <mat-select [value]="bike.frames"  [(ngModel)]="bikeData.frames">
             <mat-option *ngFor="let frameBikes of frames" [value]="frameBikes.value">
               {{frameBikes.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Speeds" value="{{bike.speeds}}">
+          <input matInput placeholder="Speeds" value="{{bike.speeds}}" [(ngModel)]="bikeData.speeds">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Brakes</mat-label>
-          <mat-select [value]="bike.brakes">
-            <mat-option *ngFor="let brakesBike of brakes" [value]="brakesBike.value">
+          <mat-select [value]="bike.brakes" [(ngModel)]="bikeData.brakes">
+            <mat-option *ngFor="let brakesBike of brakes" [value]="brakesBike.value" >
               {{brakesBike.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Wheels diameter</mat-label>
-          <mat-select  [value]="bike.diameter_wheels">
+          <mat-select  [value]="bike.diameter_wheels" [(ngModel)]="bikeData.diameter_wheels">
             <mat-option *ngFor="let wheelsBikes of diameterWheels" [value]="wheelsBikes.value">
               {{wheelsBikes.viewValue}}
             </mat-option>

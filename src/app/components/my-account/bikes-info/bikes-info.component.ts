@@ -17,7 +17,7 @@ import { BikeInfoService } from '../../../services/bike-info.service';
 })
 export class BikesInfoComponent implements OnInit {
   activeBike = 0;
-
+  selectedLevel;
   brands: BrandsBikes [] = [
     {value: 'specialized-0', viewValue: 'Specialized'},
     {value: 'giant-1', viewValue: 'Giant'},
@@ -92,7 +92,7 @@ export class BikesInfoComponent implements OnInit {
     }
   ];
 
-  bikeData: BikeInfo;
+  bikeData: BikeInfo = this.myBikes[0];
   // tslint:disable-next-line:max-line-length
   myBikeData: { sizes: string; color: string; frames: string; brakes: string; weight: string; model: string; categories: string; speeds: string; brand: string; diameter_wheels: string }[] = this.myBikes;
   private userId: string;
@@ -120,14 +120,14 @@ export class BikesInfoComponent implements OnInit {
 
   checkundef(value) {
     if (value === undefined) {
-      return 'please enter value';
+      return '';
     } else {
       return value + '+';
     }
   }
   save(): void {
-    console.log('function Save bike data');
-    this.pushUserBikeItem( this.myBikes[0] );
+    console.log('function Save bike data', this.myBikes[0]);
+    // this.pushUserBikeItem( this.myBikes[0] );
     this.updateUserBikeItem( this.myBikes[0] );
   }
   updateUserBikeItem(value: any) {
