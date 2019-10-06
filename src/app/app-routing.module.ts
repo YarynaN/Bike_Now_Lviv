@@ -11,14 +11,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { MainPageComponent} from './components/main-page/main-page.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'main-page', component: MainPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { 
-    path: 'my-account', 
+  {
+    path: 'my-account',
     component: MyAccountComponent,
     canActivate: [AuthGuardService],
     children: [
@@ -30,9 +31,9 @@ const routes: Routes = [
   },
   { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
   { path: 'contact-us', component: ContactUsComponent },
-
   { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuardService] },
   { path: 'search', component: SearchPageComponent },
+  { path: 'order-page', component: OrderPageComponent, canActivate: [AuthGuardService] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

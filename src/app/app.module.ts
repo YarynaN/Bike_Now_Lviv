@@ -45,6 +45,7 @@ import { LoggedNavbarComponent } from './components/navigation/logged-navbar/log
 import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { PersonalInfoService } from './services/personal-info.service';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 
 firebase.initializeApp(environment.firebase);
@@ -64,8 +65,8 @@ firebase.initializeApp(environment.firebase);
     BikeComponent,
     BikesInfoComponent,
     HistoryComponent,
-    ContactUsComponent
-
+    ContactUsComponent,
+    OrderPageComponent,
   ],
   imports: [
     NgAisModule,
