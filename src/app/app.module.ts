@@ -34,6 +34,7 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 firebase.initializeApp(environment.firebase);
 
@@ -62,7 +63,8 @@ firebase.initializeApp(environment.firebase);
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],

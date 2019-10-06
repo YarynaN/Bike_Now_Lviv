@@ -25,8 +25,27 @@ export class PersonalInfoComponent implements OnInit {
 
   constructor(private personalInfoService: PersonalInfoService) { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    let globalobj;
+    this.personalInfoService.getUserItemById('').subscribe(obj => {
+        globalobj = obj;
+        console.log(globalobj);
+        this.dataUser.name = this.checkundef(globalobj.name);
+        this.dataUser.surname = this.checkundef(globalobj.surname);
+        this.dataUser.photo = this.checkundef(globalobj.photo);
+        this.dataUser.email = this.checkundef(globalobj.email);
+        this.dataUser.phone = this.checkundef(globalobj.phone);
+        // this.dataUser.birthday = this.checkundef(globalobj.birthday);
+        this.dataUser.height = this.checkundef(globalobj.phone);
+      });
+  }
+  checkundef(value) {
+    if (value === undefined) {
+      return '';
+    } else {
+      return value;
+    }
+  }
   save(): void {
     this.personalInfoService.save(this.personalInfoData);
   }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { 
-  BrandsBikes, 
-  CategoriesBikes, 
-  SizesBikes, 
-  FrameBikes, 
-  BrakesBike, 
+import {
+  BrandsBikes,
+  CategoriesBikes,
+  SizesBikes,
+  FrameBikes,
+  BrakesBike,
   WheelsBikes,
   BikeInfo
 } from '../../../models/bike-info.model';
@@ -93,16 +93,52 @@ export class BikesInfoComponent implements OnInit {
   ];
 
   bikeData: BikeInfo;
-
+  // tslint:disable-next-line:max-line-length
+  myBikeData: { sizes: string; color: string; frames: string; brakes: string; weight: string; model: string; categories: string; speeds: string; brand: string; diameter_wheels: string }[] = this.myBikes;
+  private userId: string;
+  private bikeId: string;
   constructor(private bikeInfoService: BikeInfoService) { }
 
   ngOnInit() {
+    let globalobj;
+    this.bikeInfoService.getBikesById('', '').subscribe(obj => {
+      globalobj = obj;
+      console.log(globalobj);
+
+      this.myBikeData[0].model = this.checkundef(globalobj.bike_model);
+      this.myBikeData[0].brand = this.checkundef(globalobj.bike_brand);
+      this.myBikeData[0].categories = this.checkundef(globalobj.bike_category);
+      this.myBikeData[0].sizes = this.checkundef(globalobj.bike_size);
+      this.myBikeData[0].color = this.checkundef(globalobj.bike_color);
+      this.myBikeData[0].weight = this.checkundef(globalobj.bike_weight);
+      this.myBikeData[0].frames = this.checkundef(globalobj.bike_frame);
+      this.myBikeData[0].speeds = this.checkundef(globalobj.bike_speeds);
+      this.myBikeData[0].brakes = this.checkundef(globalobj.bike_brakes);
+      this.myBikeData[0].diameter_wheels = this.checkundef(globalobj.bike_Wheels);
+    });
   }
 
+  checkundef(value) {
+    if (value === undefined) {
+      return 'please enter value';
+    } else {
+      return value + '+';
+    }
+  }
   save(): void {
     console.log('function Save bike data');
+    this.pushUserBikeItem( this.myBikes[0] );
+    this.updateUserBikeItem( this.myBikes[0] );
+  }
+  updateUserBikeItem(value: any) {
+    this.bikeInfoService.updateUserBikeItem( this.userId, this.bikeId, value.model, value.brand, value.categories, value.sizes,
+      value.color, value.weight, value.frames, value.speeds, value.brakes, value.diameter_wheels);
   }
 
+  pushUserBikeItem(value: any) {
+    this.bikeInfoService.pushUserBikeItem(this.userId, value.model, value.brand, value.categories, value.sizes,
+      value.color, value.weight, value.frames, value.speeds, value.brakes, value.diameter_wheels);
+  }
   getTitleBike(bike) {
     const brand = this.brands.find(item => item.value === bike.brand);
     const brandValue = brand ? brand.viewValue : '';
@@ -111,10 +147,11 @@ export class BikesInfoComponent implements OnInit {
   }
 
   addBikePanel() {
-    this.myBikes.push({brakes: "", brand: "", categories: "", color: "", diameter_wheels: "", frames: "", model: "", sizes: "", speeds: "", weight: ""});
+    this.myBikes.push({brakes: '', brand: '', categories: '', color: '', diameter_wheels: '', frames: '', model: '',
+      sizes: '', speeds: '', weight: ''});
     this.setActiveBike(this.myBikes.length - 1);
     console.log(this.myBikes);
-  };
+  }
 
   setActiveBike(index: number) {
     this.activeBike = index;
