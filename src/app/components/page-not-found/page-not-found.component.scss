@@ -1,5 +1,5 @@
  section{
-    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),url("../../../assets/404_page_img.png");
+    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.8)),url("../../../assets/404_page_img.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -8,11 +8,20 @@
  section div:nth-child(1){
     color: white;
     font-size: 5rem;
-  }
-  section div:nth-child(1){
     margin-top: 3rem;
   }
   section div:nth-child(2){
-    width: 70%;
+    width: 50%;
+    color: white;
+    text-align: center;
+  }
+  section div a {
+    padding: 1rem 4rem 1rem 4rem;
+    border-radius: 5px;
+    background-color: #3f51b5;
+    font-size: 1.5rem;
+  }
+  section div a:hover {
+    background-color: #0e0fb5;
   }
 
