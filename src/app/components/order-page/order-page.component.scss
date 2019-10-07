@@ -1,0 +1,23 @@
+.bike-order {
+  width: 50%;
+  margin: 2% 25%;
+}
+
+.order-form, mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.datepickers {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  margin: 1% 10%;
+}

@@ -1,0 +1,44 @@
+<mat-card class="bike-order">
+  <mat-card-header>
+    <mat-card-title>Ordering a bicycle</mat-card-title>
+  </mat-card-header>
+  <form class="order-form">
+    <mat-card-content>
+      <h5>1. General information</h5>
+      <div class="datepickers">
+        <mat-form-field>
+          <input matInput [matDatepicker]="dateFrom" placeholder="Please select Start Date of rental">
+          <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+          <mat-datepicker #dateFrom></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="dateTo" placeholder="Please select End Date of rental">
+          <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+          <mat-datepicker #dateTo></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Please, enter your amount">
+      </mat-form-field>
+      <h5>2. Form of payment</h5>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button color="primary" value="cash">Cash payment</mat-radio-button>
+        <mat-radio-button color="primary" value="card">Payment by card</mat-radio-button>
+      </mat-radio-group>
+      <h5>3. Credit card information</h5>
+      <div class="card-info">
+        <mat-form-field>
+          <input matInput placeholder="Credit Card Number" value="xxxx xxxx xxxx xxxx">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Expiration Date" value="MM/YYYY">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Security Code" value="CVC">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color="primary">Order</button>
+    <button mat-raised-button color="primary">Cancel</button>
+  </form>
+</mat-card>

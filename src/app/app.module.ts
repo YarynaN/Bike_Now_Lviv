@@ -13,7 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* FormsModule */
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -45,7 +45,7 @@ import { LoggedNavbarComponent } from './components/navigation/logged-navbar/log
 import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { PersonalInfoService } from './services/personal-info.service';
-import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPageComponent } from './components/order-page/order-page.component';
 
 
 firebase.initializeApp(environment.firebase);
@@ -84,6 +84,7 @@ firebase.initializeApp(environment.firebase);
     MatCardModule,
     MatSnackBarModule,
     MatCarouselModule.forRoot(),
+    FormsModule,
   ],
   providers: [AuthGuardService, PersonalInfoService],
   bootstrap: [AppComponent],

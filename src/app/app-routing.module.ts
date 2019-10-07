@@ -11,7 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { MainPageComponent} from './components/main-page/main-page.component';
-import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPageComponent } from './components/order-page/order-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
