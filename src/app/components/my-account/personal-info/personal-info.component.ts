@@ -17,7 +17,7 @@ export class PersonalInfoComponent implements OnInit {
     photo: '../../../../assets/my-account-photo.jpg',
     email: 'lucky@gmail.com',
     phone: '+380359874638',
-    birthday: new FormControl(new Date('08/29/2001')),
+    birthday: new FormControl(new Date('2019-10-18T21:00:00.000Z')),
     height: '165',
   };
 
@@ -35,8 +35,8 @@ export class PersonalInfoComponent implements OnInit {
         // this.dataUser.photo = this.checkundef(globalobj.photo);
         this.dataUser.email = this.checkundef(globalobj.email);
         this.dataUser.phone = this.checkundef(globalobj.phone);
-        // this.dataUser.birthday = this.checkundef(globalobj.birthday);
-        this.dataUser.height = this.checkundef(globalobj.phone);
+        this.dataUser.birthday =   new FormControl(new Date( this.checkundef(globalobj.birthday) ))   ;
+        this.dataUser.height = this.checkundef(globalobj.height);
       });
   }
   checkundef(value) {
@@ -46,7 +46,12 @@ export class PersonalInfoComponent implements OnInit {
       return value;
     }
   }
+  dateToString() {
+    const d = new Date(`${this.personalInfoData.birthday.value.toISOString()}`);
+    return   d.getMonth() + '/' + d.getDate() + '/' + d.getFullYear();
+  }
   save(): void {
+    this.personalInfoData.birthday = this.dateToString();
     this.personalInfoService.save(this.personalInfoData);
   }
 }

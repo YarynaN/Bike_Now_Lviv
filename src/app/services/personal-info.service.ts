@@ -41,7 +41,7 @@ export class PersonalInfoService {
     // Save personal info data
     console.log('Data saved: ', data);
     this.updateUserItem('', checkundef(data.name), checkundef(data.surname), checkundef(''), checkundef(data.email),
-      checkundef(data.phone), checkundef(''), checkundef(data.height));
+      checkundef(data.phone), checkundef(data.birthday), checkundef(data.height));
 
     function checkundef(value: any) {
       if (value === undefined) {

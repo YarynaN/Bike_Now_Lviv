@@ -41,22 +41,32 @@ export class BikeInfoService {
   pushUserBikeItem( key: string,  model: string  , brand: string , categories: string , sizes: string ,
                     color: string , weight: string , frames: string , speeds: string , brakes: string , diameterWheels: string ) {
     const bike = {
-      bike_model: model,
-      bike_brand: brand,
-      bike_category: categories,
-      bike_size  : sizes,
-      bike_color : color,
-      bike_weight : weight,
-      bike_frame : frames,
-      bike_speeds : speeds,
-      bike_brakes : brakes,
-      bike_Wheels : diameterWheels
+      bike_model: checkundef(model),
+      bike_brand: checkundef(brand),
+      bike_category: checkundef(categories),
+      bike_size  : checkundef(sizes),
+      bike_color : checkundef(color),
+      bike_weight : checkundef(weight),
+      bike_frame : checkundef(frames),
+      bike_speeds : checkundef(speeds),
+      bike_brakes : checkundef(brakes),
+      bike_Wheels : checkundef(diameterWheels)
     };
+
+    function checkundef(value: any) {
+      if (value === undefined) {
+        return '';
+      } else {
+        return value;
+      }
+    }
+
     const newBikeKey = firebase.database().ref().child('/bikes/').push().key;
     const dynamicProperty = newBikeKey;
     const authorizeduserId = this.userId;
     key = authorizeduserId + '/bikes/' + dynamicProperty + '/' ;
     this.bikesData.update(key, { [dynamicProperty] : bike});
+    return newBikeKey;
   }
 
   getBikesById(idUser: string, idBike: string) {
