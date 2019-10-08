@@ -1,0 +1,25 @@
+<section>
+  <div class="contact-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Contact Us</mat-card-title>
+      </mat-card-header>
+      <form class="example-form" [formGroup]="contactForm" (ngSubmit)="tryContact(contactForm.value)">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input formControlName="name" matInput placeholder="Full name" />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input formControlName="email" matInput placeholder="E-mail" />
+            <mat-error *ngIf="contactForm.controls.email.errors?.required">Email is required.</mat-error>
+            <mat-error *ngIf="contactForm.controls.email.errors?.email">Email must be a valid email address.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea formControlName="message" matInput placeholder = "Your message"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block">Submit</button>
+      </form>
+    </mat-card>
+  </div>
+</section>

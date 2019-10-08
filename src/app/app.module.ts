@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -42,7 +43,8 @@ firebase.initializeApp(environment.firebase);
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserAnimationsModule,
