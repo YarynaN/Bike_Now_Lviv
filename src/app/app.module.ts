@@ -23,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -31,7 +32,7 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
-import { MainPageComponent } from './components/main-page/main-page.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 firebase.initializeApp(environment.firebase);
 
@@ -57,7 +58,8 @@ firebase.initializeApp(environment.firebase);
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCarouselModule.forRoot(),
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],
