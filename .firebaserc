@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bikenowlviv"
+  },
+  "targets": {
+    "bikenowlviv": {
+      "hosting": {
+        "bikeNowLviv": [
+          "bikenowlviv"
+        ]
+      }
+    }
   }
 }
