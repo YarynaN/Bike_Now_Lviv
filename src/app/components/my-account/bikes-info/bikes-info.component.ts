@@ -105,16 +105,19 @@ export class BikesInfoComponent implements OnInit {
       globalobj = obj;
       console.log(globalobj);
 
-      this.myBikeData[0].model = this.checkundef(globalobj.bike_model);
-      this.myBikeData[0].brand = this.checkundef(globalobj.bike_brand);
-      this.myBikeData[0].categories = this.checkundef(globalobj.bike_category);
-      this.myBikeData[0].sizes = this.checkundef(globalobj.bike_size);
-      this.myBikeData[0].color = this.checkundef(globalobj.bike_color);
-      this.myBikeData[0].weight = this.checkundef(globalobj.bike_weight);
-      this.myBikeData[0].frames = this.checkundef(globalobj.bike_frame);
-      this.myBikeData[0].speeds = this.checkundef(globalobj.bike_speeds);
-      this.myBikeData[0].brakes = this.checkundef(globalobj.bike_brakes);
-      this.myBikeData[0].diameter_wheels = this.checkundef(globalobj.bike_Wheels);
+       
+        this.myBikeData[0].model = this.checkundef(globalobj.bike_model);
+        this.myBikeData[0].brand = `${this.checkundef(globalobj.bike_brand).toLocaleString()}`;
+        this.myBikes[0].model = `${this.checkundef(globalobj.bike_model)}`;
+        this.myBikes[0].brand = `${this.checkundef(globalobj.bike_brand)}`;
+        this.myBikeData[0].categories = `${this.checkundef(globalobj.bike_category)}`;
+        this.myBikeData[0].sizes = `${this.checkundef(globalobj.bike_size)}`;
+        this.myBikeData[0].color = `${this.checkundef(globalobj.bike_color)}`;
+        this.myBikeData[0].weight = `${this.checkundef(globalobj.bike_weight)}`;
+        this.myBikeData[0].frames = `${this.checkundef(globalobj.bike_frame)}`;
+        this.myBikeData[0].speeds = `${this.checkundef(globalobj.bike_speeds)}`;
+        this.myBikeData[0].brakes = `${this.checkundef(globalobj.bike_brakes)}`;
+        this.myBikeData[0].diameter_wheels = `${this.checkundef(globalobj.bike_Wheels)}`;
     });
   }
 
@@ -122,7 +125,7 @@ export class BikesInfoComponent implements OnInit {
     if (value === undefined) {
       return '';
     } else {
-      return value + '+';
+      return value + '';
     }
   }
   save(): void {
