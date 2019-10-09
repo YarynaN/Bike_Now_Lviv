@@ -24,6 +24,9 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+/* SearchPage - InstaSearch */
+import { NgAisModule } from 'angular-instantsearch';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -45,6 +48,7 @@ firebase.initializeApp(environment.firebase);
     RegisterComponent
   ],
   imports: [
+    NgAisModule.forRoot(),
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
