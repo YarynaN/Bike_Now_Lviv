@@ -1,0 +1,42 @@
+<section  class="container">
+  <form [formGroup]="personalInfoForm"  (ngSubmit)="onSubmit()">
+    <div class="profile-photo">
+      <img mat-card-lg-image src="{{ f.photo.value }}" alt="profile-photo" class="photocard" />
+    </div>
+    <button mat-raised-button color="primary" (click)="order()" class="rent-bike-button">
+      I want to rent a bike
+    </button>
+
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" [(ngModel)]="f.name.value"/>
+        <mat-error *ngIf="f.name.errors?.required">Name is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Surname" formControlName="surname" [(ngModel)]="f.surname.value"/>
+        <mat-error *ngIf="f.surname.errors?.required">Surname is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="f.email.value"/>
+        <mat-error *ngIf="f.email.errors?.required">Email is required.</mat-error>
+        <mat-error *ngIf="f.email.errors?.email">Email must be a valid email address.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone number" formControlName="phone" [(ngModel)]="f.phone.value"/>
+        <mat-error *ngIf="f.phone.errors?.required">Phone is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Date of birth(choose a date)" formControlName="birthday" [(ngModel)]="f.birthday.value"/>
+        <mat-error *ngIf="f.birthday.errors?.required">Birthday is required.</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Your height in cm" formControlName="height" [(ngModel)]="f.height.value"/>
+        <mat-error *ngIf="f.height.errors?.required">Height is required.</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
+    <button mat-raised-button color="primary" (click)="onReset()" type="reset">Discard</button>
+  </form>
+</section>

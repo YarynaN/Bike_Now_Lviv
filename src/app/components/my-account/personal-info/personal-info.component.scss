@@ -1,0 +1,49 @@
+.container {
+  background-image: url("../../../../assets/myAccount-bg.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+.profile-photo {
+  display: flex;
+  justify-content: center;
+}
+
+.photocard {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+.rent-bike-button {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  z-index: 1;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.example-container > * {
+  width: 80%;
+}
+
+.mat-form-field {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0px 20px;
+}
+
+button.mat-raised-button {
+  font-weight: bold;
+  margin: 20px 10%;
+  width: 200px;
+}
