@@ -29,14 +29,16 @@ export interface WheelsBikes {
 }
 
 export interface BikeInfo {
-  brand: string,
-  model: string,
-  categories: string,
-  sizes: string,
-  color: string,
-  weight: string,
-  frames: string,
-  speeds: string,
-  brakes: string,
-  diameter_wheels: string
+  id?: string;
+  brand: string;
+  model: string;
+  categories: string;
+  sizes: string;
+  color: string;
+  weight: string;
+  frames: string;
+  speeds: string;
+  brakes: string;
+  diameter_wheels: string;
+  price_rent: string;
 }

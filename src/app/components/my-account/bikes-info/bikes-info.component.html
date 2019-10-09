@@ -1,6 +1,6 @@
 <section  class="container">
   <mat-acordion multi="true">
-    <mat-expansion-panel *ngFor="let bike of myBikes; let idx = index"
+    <mat-expansion-panel *ngFor="let bike of bikes; let idx = index"
       [expanded]="activeBike === idx"
       (opened)="setActiveBike(idx)">
       <mat-expansion-panel-header>
@@ -8,73 +8,12 @@
           {{ getTitleBike(bike) }}
         </mat-panel-title>
       </mat-expansion-panel-header>
-    
       <div class="example-container">
-        <mat-form-field>
-          <mat-label>Brands</mat-label>
-          <mat-select [value]="bike.brand">
-            <mat-option *ngFor="let brandsBikes of brands" [value]="brandsBikes.value">
-              {{brandsBikes.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Model" value="{{bike.model}}">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Categories</mat-label>
-          <mat-select [value]="bike.categories">
-            <mat-option *ngFor="let categoriesBikes of categories" [value]="categoriesBikes.value">
-              {{categoriesBikes.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Sizes</mat-label>
-          <mat-select [value]="bike.sizes">
-            <mat-option *ngFor="let sizesBikes of sizes" [value]="sizesBikes.value">
-              {{sizesBikes.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Color" value="{{bike.color}}">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Weight" value="{{bike.weight}}">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Frames</mat-label>
-          <mat-select [value]="bike.frames">
-            <mat-option *ngFor="let frameBikes of frames" [value]="frameBikes.value">
-              {{frameBikes.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Speeds" value="{{bike.speeds}}">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Brakes</mat-label>
-          <mat-select [value]="bike.brakes">
-            <mat-option *ngFor="let brakesBike of brakes" [value]="brakesBike.value">
-              {{brakesBike.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Wheels diameter</mat-label>
-          <mat-select  [value]="bike.diameter_wheels">
-            <mat-option *ngFor="let wheelsBikes of diameterWheels" [value]="wheelsBikes.value">
-              {{wheelsBikes.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <app-bike [bike]="bike"></app-bike>
       </div>
-      <mat-action-row>
-        <button mat-raised-button (click)="save()">Save</button>
-      </mat-action-row>
     </mat-expansion-panel>
   </mat-acordion>
-  <button mat-fab (click)="addBikePanel()">+</button>
+  <button mat-fab color="primary" (click)="addBikePanel()"
+      matTooltip="Add bike"
+      aria-label="Button that displays a tooltip when focused over">+</button>
 </section>

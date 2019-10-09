@@ -17,10 +17,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { 
     path: 'my-account',
-    component: MyAccountComponent, canActivate: [AuthGuardService],
+    component: MyAccountComponent, 
+    canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: '/my-account/(outlet-my-account:personal-info)', pathMatch: 'full' },
-      { path: 'personal-info', component: PersonalInfoComponent, outlet: 'outlet-my-account', canActivate: [AuthGuardService] },
+      { path: 'personal-info', component: PersonalInfoComponent, outlet: 'outlet-my-account', canActivate: [AuthGuardService]},
       { path: 'bikes-info', component: BikesInfoComponent, outlet: 'outlet-my-account', canActivate: [AuthGuardService] },
       { path: 'history', component: HistoryComponent, outlet: 'outlet-my-account', canActivate: [AuthGuardService] },
     ],

@@ -24,16 +24,19 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PersonalInfoComponent } from './components/my-account/personal-info/personal-info.component';
+import { BikeComponent } from './components/my-account/bikes-info/bike/bike.component';
 import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-info.component';
 import { HistoryComponent } from './components/my-account/history/history.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
+import { PersonalInfoService } from './services/personal-info.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -47,6 +50,7 @@ firebase.initializeApp(environment.firebase);
     SearchPageComponent,
     RegisterComponent,
     PersonalInfoComponent,
+    BikeComponent,
     BikesInfoComponent,
     HistoryComponent
   ],
@@ -60,11 +64,12 @@ firebase.initializeApp(environment.firebase);
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatCardModule,
     MatSnackBarModule
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, PersonalInfoService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

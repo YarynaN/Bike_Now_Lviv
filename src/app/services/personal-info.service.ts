@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
-import { PersonalInfo } from '../models/personal-info.model';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalInfoService {
+  usersData: AngularFireList<any>;
+  private uid: string;
 
-  constructor() { }
+  private readonly userPath: string = '/usersData';
 
-  save(data: PersonalInfo): boolean {
-    
-    // Save personal info data
-    console.log('Data saved: ', data);
-    return true;
+  constructor(private auth: AuthService, private db: AngularFireDatabase) {
+    this.usersData = db.list(this.userPath);
+    this.uid = this.auth.currentUser.uid;
+  }
+
+  updateUserItem(data: any) {
+    this.usersData.update(this.uid, { ...data });
+  }
+
+  getUserItem() {
+    return this.db.object(`${this.userPath}/${this.uid}`).valueChanges();
   }
 }

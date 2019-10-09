@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {FormControl, NgForm, AbstractControl, FormControlName} from '@angular/forms';
 import { PersonalInfoService } from '../../../services/personal-info.service';
 import { PersonalInfo } from '../../../models/personal-info.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-info',
@@ -9,25 +11,47 @@ import { PersonalInfo } from '../../../models/personal-info.model';
   styleUrls: ['./personal-info.component.scss']
 })
 export class PersonalInfoComponent implements OnInit {
+  personalInfoForm: FormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    surname: ['', Validators.required],
+    photo: [''],
+    email: ['', [Validators.required, Validators.email]],
+    birthday: ['', Validators.required],
+    phone: ['', Validators.required],
+    height: ['', Validators.required]
+  });
 
-  // temp mockup personal info data
-  dataUser: PersonalInfo = {
-    name: 'Natalja',
-    surname: 'Kuziv',
-    photo: '../../../../assets/my-account-photo.jpg',
-    email: 'lucky@gmail.com',
-    phone: '+380359874638',
-    birthday: new FormControl(new Date('08/29/2001')),
-    height: '165',
-  };
+  constructor(private formBuilder: FormBuilder, private personalInfoService: PersonalInfoService, private authService: AuthService) {
+  }
 
-  personalInfoData: PersonalInfo = this.dataUser;
+  ngOnInit() {
+    this.personalInfoService.getUserItem().subscribe((data: any) => {
+      if (data) {
+        this.personalInfoForm.setValue({
+          name: data.name || '',
+          surname: data.surname || '',
+          photo: data.photo || '',
+          email: data.email || '',
+          birthday: data.birthday || '',
+          phone: data.phone || '',
+          height: data.height || '',
+        });
+      }
+    });
+  }
 
-  constructor(private personalInfoService: PersonalInfoService) { }
+  get f() { return this.personalInfoForm.controls; }
 
-  ngOnInit() {}
+  onSubmit() {
+    // stop here if form is invalid
+    if (this.personalInfoForm.invalid) {
+      return;
+    }
 
-  save(): void {
-    this.personalInfoService.save(this.personalInfoData);
+    this.personalInfoService.updateUserItem(this.personalInfoForm.value);
+  }
+
+  onReset() {
+    console.log('reset');
   }
 }

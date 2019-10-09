@@ -20,6 +20,13 @@
   border-radius: 50%;
 }
 
+.rent-bike-button {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  z-index: 1;
+}
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -37,13 +44,6 @@
 
 button.mat-raised-button {
   font-weight: bold;
-  background-color: lightgray;
-  cursor: pointer;
   margin: 20px 10%;
   width: 200px;
-}
-
-button.mat-raised-button:hover {
-  background-color: lightslategray;
-  color: white;
 }
