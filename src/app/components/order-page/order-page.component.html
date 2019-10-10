@@ -20,23 +20,29 @@
       <mat-form-field>
         <input matInput placeholder="Please, enter your amount">
       </mat-form-field>
-      <h5>2. Form of payment</h5>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button color="primary" value="cash">Cash payment</mat-radio-button>
-        <mat-radio-button color="primary" value="card">Payment by card</mat-radio-button>
-      </mat-radio-group>
-      <h5>3. Credit card information</h5>
-      <div class="card-info">
-        <mat-form-field>
-          <input matInput placeholder="Credit Card Number">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Expiration Date">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Security Code">
-        </mat-form-field>
-      </div>
+      <!-- <mat-form-field [(ngModel)]="selectedCard" [ngModelOptions]="{standalone: true}" name="select"> -->
+        <h5>2. Form of payment</h5>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedCard" [ngModelOptions]="{standalone: true}" name="selectedCard">
+          <mat-radio-button color="primary" value="cash" [checked]="true">Cash payment</mat-radio-button>
+          <mat-radio-button color="primary" value="card">Payment by card</mat-radio-button>
+        </mat-radio-group>
+      <!-- </mat-form-field>  -->
+      <!-- <ng-template *ngIf="selectedCard === card">  (click)="showCardPayment()"-->
+        <div class="card-payment" *ngIf="selectedCard === card">
+          <h5>3. Credit card information</h5>
+          <div class="card-info">
+            <mat-form-field>
+              <input matInput placeholder="Credit Card Number" value="xxxx xxxx xxxx xxxx">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Expiration Date" value="MM/YYYY">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Security Code" value="CVC">
+            </mat-form-field>
+          </div>
+        </div>
+      <!-- </ng-template> -->
     </mat-card-content>
     <button mat-raised-button color="primary">Order</button>
     <button mat-raised-button color="primary">Cancel</button>

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-page.component.scss']
 })
 export class OrderPageComponent implements OnInit {
+  selectedCard: string='cash';
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  // showCardPayment() {
+  //   return this.selectedCard;
+  // }
 
 }
