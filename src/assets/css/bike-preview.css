@@ -49,15 +49,15 @@
   }
 }
 .card--1 .card__img, .card--1 .card__img--hover {
-  background-image: url('https://www.bricklanebikes.co.uk/images/thumbs/0035903_6ku-canvas-disc-hybrid-bike-silver.jpeg');
+  background-image: url('../img/bike1.png');
 }
 
 .card--2 .card__img, .card--2 .card__img--hover {
-  background-image: url('https://www.panoramacycles.com/wp-content/uploads/2016/02/fatbike-chic-chocs-2019-20.jpg');
+  background-image: url('../img/bike2.png');
 }
 
 .card--3 .card__img, .card--3 .card__img--hover {
-  background-image: url('https://cdn.shopify.com/s/files/1/0903/4494/products/Smashing-Pumpkin-GX-Eagle-complete-front-white.jpg?v=1563401075')
+  background-image: url('../img/bike3.png');
 }
 
 .card__like {
