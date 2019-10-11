@@ -10,12 +10,25 @@
 
 .datepickers {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 150px;
+}
+
+.card-number {
+  text-align: center;
+}
+
+.your-amount, .expir-date, .security-code {
+  width: 80px;
+  text-align: center;
 }
 
 .card-info {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 button {
