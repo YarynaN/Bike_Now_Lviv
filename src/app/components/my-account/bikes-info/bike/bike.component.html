@@ -1,0 +1,82 @@
+<form [formGroup]="bikeForm">
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Brands</mat-label>
+      <mat-select formControlName="brand" [value]="f.brand.value">
+        <mat-option *ngFor="let brandsBikes of constants.brands" [value]="brandsBikes.value">
+          {{brandsBikes.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.brand.errors?.required">Brand is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Model" formControlName="model" [(ngModel)]="f.model.value"/>
+      <mat-error *ngIf="f.model.errors?.required">Model is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Categories</mat-label>
+      <mat-select formControlName="categories" [value]="f.categories.value">
+        <mat-option *ngFor="let categoriesBikes of constants.categories" [value]="categoriesBikes.value">
+          {{categoriesBikes.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.categories.errors?.required">Categories is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Sizes</mat-label>
+        <mat-select formControlName="sizes" [value]="f.sizes.value">
+          <mat-option *ngFor="let sizesBikes of constants.sizes" [value]="sizesBikes.value">
+            {{sizesBikes.viewValue}}
+          </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.sizes.errors?.required">Sizes is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Color" formControlName="color" [(ngModel)]="f.color.value"/>
+      <mat-error *ngIf="f.color.errors?.required">Color is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Weight" formControlName="weight" [(ngModel)]="f.weight.value"/>
+      <mat-error *ngIf="f.weight.errors?.required">Weight is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Frames</mat-label>
+      <mat-select formControlName="frames" [value]="f.frames.value">
+        <mat-option *ngFor="let frameBikes of constants.frames" [value]="frameBikes.value">
+          {{frameBikes.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.frames.errors?.required">Frames is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Speeds" formControlName="speeds" [(ngModel)]="f.speeds.value"/>
+      <mat-error *ngIf="f.speeds.errors?.required">Speeds is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Brakes</mat-label>
+      <mat-select formControlName="brakes" [value]="f.brakes.value">
+        <mat-option *ngFor="let brakesBike of constants.brakes" [value]="brakesBike.value">
+          {{brakesBike.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.brakes.errors?.required">Brakes is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Wheels diameter</mat-label>
+      <mat-select formControlName="diameter_wheels" [value]="f.diameter_wheels.value">
+        <mat-option *ngFor="let wheelsBikes of constants.diameterWheels" [value]="wheelsBikes.value">
+          {{wheelsBikes.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.diameter_wheels.errors?.required">Wheels is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Rental price (24 hours)" formControlName="price_rent" [(ngModel)]="f.price_rent.value"/>
+      <mat-error *ngIf="f.price_rent.errors?.required">Rental price is required.</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-action-row>
+    <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
+    <button mat-raised-button color="primary" (click)="delete()">Delete</button>
+  </mat-action-row>
+</form>
