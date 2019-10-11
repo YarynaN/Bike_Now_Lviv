@@ -1,7 +1,12 @@
 <section  class="container">
   <form [formGroup]="personalInfoForm"  (ngSubmit)="onSubmit()">
-    <div class="profile-photo">
-      <img mat-card-lg-image src="{{ f.photo.value }}" alt="profile-photo" class="photocard" />
+    <div class="profile-block">
+      <div class="profile-photo">
+        <div class="upload-new-photo">Upload New Photo</div>
+        <div class="profile-image">
+          <img mat-card-lg-image src="{{ f.photo.value }}" alt="profile-photo" class="photocard" />
+        </div>
+      </div>
     </div>
     <button mat-raised-button color="primary" (click)="order()" class="rent-bike-button">
       I want to rent a bike
@@ -36,7 +41,9 @@
         <mat-error *ngIf="f.height.errors?.required">Height is required.</mat-error>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
-    <button mat-raised-button color="primary" (click)="onReset()" type="reset">Discard</button>
+    <div class="bottom-buttons">
+      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
+      <button mat-raised-button color="primary" (click)="onReset()" type="reset">Discard</button>
+    </div>
   </form>
 </section>

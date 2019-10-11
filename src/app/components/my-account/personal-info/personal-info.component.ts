@@ -5,6 +5,7 @@ import { PersonalInfo } from '../../../models/personal-info.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
@@ -30,7 +31,7 @@ export class PersonalInfoComponent implements OnInit {
         this.personalInfoForm.setValue({
           name: data.name || '',
           surname: data.surname || '',
-          photo: data.photo || '',
+          photo: data.photo || './assets/my-account-photo.jpg',
           email: data.email || '',
           birthday: data.birthday || '',
           phone: data.phone || '',
