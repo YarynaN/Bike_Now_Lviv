@@ -13,7 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* FormsModule */
-import { ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -24,15 +24,21 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { PersonalInfoComponent } from './components/my-account/personal-info/personal-info.component';
+import { BikeComponent } from './components/my-account/bikes-info/bike/bike.component';
+import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-info.component';
+import { HistoryComponent } from './components/my-account/history/history.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { PersonalInfoService } from './services/personal-info.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -46,22 +52,28 @@ firebase.initializeApp(environment.firebase);
     SearchPageComponent,
     RegisterComponent,
     MainPageComponent
+    PersonalInfoComponent,
+    BikeComponent,
+    BikesInfoComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserAnimationsModule,
     AngularMaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     FlexLayoutModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatCardModule,
     MatSnackBarModule,
     MatCarouselModule.forRoot(),
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, PersonalInfoService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
