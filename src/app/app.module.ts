@@ -40,13 +40,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
-import { AuthGuardService } from './services/auth-guard.service';
 import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
 import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { PersonalInfoService } from './services/personal-info.service';
 import { OrderPageComponent } from './components/order-page/order-page.component';
-
+/* Services */
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { PaymentService } from './services/payment.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -86,7 +88,12 @@ firebase.initializeApp(environment.firebase);
     MatCarouselModule.forRoot(),
     FormsModule,
   ],
-  providers: [AuthGuardService, PersonalInfoService],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    PaymentService,
+    PersonalInfoService,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

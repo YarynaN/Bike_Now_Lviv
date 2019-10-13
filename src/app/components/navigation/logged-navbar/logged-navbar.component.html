@@ -14,7 +14,7 @@
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <button mat-menu-item routerLink="/my-account">My account</button>
-                    <button mat-menu-item routerLink="/" (click)="account.doLogout;">Sign out</button>
+                    <button mat-menu-item (click)="account.doLogout">Sign out</button>
                 </mat-menu>
             </li>
         </ul>

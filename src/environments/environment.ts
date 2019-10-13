@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  stripeKey: 'pk_test_XD6shRXcsspvR62SVIYl0kJe00aOP5RTJ0',
   firebase: {
     apiKey: 'API_KEY',
     authDomain: 'bikenowlviv.firebaseapp.com',
