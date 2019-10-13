@@ -51,7 +51,7 @@ firebase.initializeApp(environment.firebase);
     MyAccountComponent,
     SearchPageComponent,
     RegisterComponent,
-    MainPageComponent
+    MainPageComponent,
     PersonalInfoComponent,
     BikeComponent,
     BikesInfoComponent,

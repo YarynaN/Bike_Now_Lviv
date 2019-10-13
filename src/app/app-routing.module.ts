@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { 
+  {
     path: 'my-account',
-    component: MyAccountComponent, 
+    component: MyAccountComponent,
     canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: '/my-account/(outlet-my-account:personal-info)', pathMatch: 'full' },
@@ -29,7 +29,6 @@ const routes: Routes = [
     ],
   },
   { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
-
   { path: '**', component: PageNotFoundComponent }
 ];
 

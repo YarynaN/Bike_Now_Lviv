@@ -176,3 +176,7 @@
 .card:hover .card__info-hover {
   opacity: 1;
 }
+
+.card_link_noUnder{
+  text-decoration: none;
+}
