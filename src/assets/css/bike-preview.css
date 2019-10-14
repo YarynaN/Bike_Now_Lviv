@@ -12,17 +12,9 @@
     flex: 0 0 50%;
     max-width: 50%;
   }
-
 }
-
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-/**{
-  box-sizing: border-box;
-}*/
-
-
 
 .cards-block{
   background-color: transparent;/*#D2DBDD;*/
@@ -89,7 +81,6 @@
   height: 235px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-
 }
 
 .card__info-hover {
@@ -111,7 +102,6 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   top: 0;
-
 }
 .card {
   margin-right: 25px;
