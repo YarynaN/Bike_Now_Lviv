@@ -4,8 +4,10 @@
             <div class="filters">
                 <h4>Your height:</h4>
                 <ais-refinement-list attribute="height"></ais-refinement-list>
+                <hr>
                 <h4>Brand:</h4>
                 <ais-refinement-list attribute="brand"></ais-refinement-list>
+                <hr>
                 <h4>Price:</h4>
                 <ais-refinement-list attribute="price"></ais-refinement-list>
             </div>
@@ -15,6 +17,7 @@
             <h1>Search your bicycle!</h1>
             <ais-search-box></ais-search-box>
             <ais-hits>
+
                 <ng-template let-hits="hits">
                     <div class='element' *ngFor="let hit of hits">
                         <img src="{{hit.image}}" alt="{{hit.name}}" align="left" />
@@ -23,7 +26,9 @@
                                 <ais-highlight attribute="name" [hit]="hit"></ais-highlight>
                             </h4>
                             <p>
-                                <ais-highlight attribute="description" [hit]="hit">Price:{{hit.price}}</ais-highlight>
+                                <ais-highlight attribute="description" [hit]="hit"></ais-highlight>
+                            </p>
+                            <p class="price">
                                 <b>Price: {{hit.price}}</b>
                             </p>
                         </div>

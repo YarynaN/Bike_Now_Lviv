@@ -34,6 +34,8 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
+import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -45,7 +47,9 @@ firebase.initializeApp(environment.firebase);
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoggedNavbarComponent,
+    GuestNavbarComponent
   ],
   imports: [
     NgAisModule.forRoot(),

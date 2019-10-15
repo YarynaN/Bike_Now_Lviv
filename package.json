@@ -23,6 +23,8 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
+    "@types/algoliasearch": "^3.34.3",
+    "algoliasearch": "^3.35.1",
     "angular-instantsearch": "^2.2.2",
     "firebase": "^6.6.0",
     "hammerjs": "^2.0.8",

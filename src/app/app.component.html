@@ -1,11 +1,9 @@
-<mat-toolbar color="primary" class="app-header">
-    <span class="nav-tool-items">
-        <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
-        <a mat-button routerLink="register" routerLinkActive="active">Register</a>
-        <a mat-button routerLink="/my-account" routerLinkActive="active">My Account</a>
-        <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
-        <a mat-button routerLink="/hello-world" routerLinkActive="active">Page not Found</a>
-    </span>
-</mat-toolbar>
+<div *ngIf="userInfo.isLogged; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <app-logged-navbar></app-logged-navbar>
+</ng-template>
+<ng-template #elseBlock>
+    <app-guest-navbar></app-guest-navbar>
+</ng-template>
 
 <router-outlet></router-outlet>
