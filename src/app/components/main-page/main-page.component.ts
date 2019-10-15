@@ -17,7 +17,7 @@ export class MainPageComponent implements OnInit {
     { image: '../../../assets/img/client4.png', name: 'Bohdan Kostyuk', position: 'Software Developer',
       text: '"This service is bringing me a lot of money as I use it to share my bicycle with other people for money. ' +
         'I am thinking of buying a few bikes for renting purposes."'},
-    { image: '../../../assets/img/client5.png', name: 'Stepan Voytenko', position: 'Musician', text: '" The bike from this bike-sharing' +
+    { image: '../../../assets/img/client5.png', name: 'Stepan Voytenko', position: 'Musician', text: '" The bike from this bike sharing' +
         ' service was good and the rates were very reasonable. "'}
     ];
   constructor() { }
