@@ -9,7 +9,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="example-container">
-        <app-bike [bike]="bike"></app-bike>
+        <app-bike [bike]="bike" (removeLastEmptyBike)="removeEmptyBike($event)"></app-bike>
       </div>
     </mat-expansion-panel>
   </mat-acordion>

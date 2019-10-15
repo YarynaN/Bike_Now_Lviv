@@ -55,7 +55,7 @@ firebase.initializeApp(environment.firebase);
     PersonalInfoComponent,
     BikeComponent,
     BikesInfoComponent,
-    HistoryComponent
+    HistoryComponent,
   ],
   imports: [
     BrowserAnimationsModule,

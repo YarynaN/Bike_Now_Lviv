@@ -36,7 +36,7 @@
       <mat-error *ngIf="f.color.errors?.required">Color is required.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Weight" formControlName="weight" [(ngModel)]="f.weight.value"/>
+      <input matInput placeholder="Weight, kg" formControlName="weight" [(ngModel)]="f.weight.value"/>
       <mat-error *ngIf="f.weight.errors?.required">Weight is required.</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -71,12 +71,35 @@
       <mat-error *ngIf="f.diameter_wheels.errors?.required">Wheels is required.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Rental price (24 hours)" formControlName="price_rent" [(ngModel)]="f.price_rent.value"/>
+      <input matInput placeholder="Rental price (24 hours), UAN" formControlName="price_rent" [(ngModel)]="f.price_rent.value"/>
       <mat-error *ngIf="f.price_rent.errors?.required">Rental price is required.</mat-error>
     </mat-form-field>
   </div>
+  <div class="bike-images">
+    <div class="images" *ngFor="let image of images">
+      <img class="image" src="{{image}}" alt="Bike Image"/>
+      <button class="only-show-on-hover" (click)="removeImage(image)"><i class="material-icons icon-image-preview">clear</i></button>
+    </div>
+  </div>
   <mat-action-row>
-    <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
-    <button mat-raised-button color="primary" (click)="delete()">Delete</button>
+    <label 
+      mat-raised-button color="primary"
+      [ngClass]="{
+        'mat-raised-button':true,
+        'image-upload-container':true,
+        'btn-bwm':true,
+        'disabled':!id}"
+      class="mat-raised-button image-upload-container btn btn-bwm">
+      <span>Select Image</span>
+      <input #imageInput
+        type="file"
+        accept="image/*"
+        [attr.disabled]="id ? null : ''"
+        (change)="processFile(imageInput)">
+    </label>
+    <div class="d-s-buttons">
+      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
+      <button mat-raised-button color="primary" (click)="delete()">Delete</button>
+    </div>
   </mat-action-row>
 </form>

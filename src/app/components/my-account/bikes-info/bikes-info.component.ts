@@ -10,6 +10,7 @@ import { BikeInfoService } from '../../../services/bike-info.service';
 })
 export class BikesInfoComponent implements OnInit {
   activeBike = 0;
+  removeBikeWithoutId: boolean;
 
   bikes: BikeInfo[] = [];
 
@@ -46,6 +47,13 @@ export class BikesInfoComponent implements OnInit {
     });
     this.setActiveBike(this.bikes.length - 1);
   }
+
+  removeEmptyBike(removeEmptyBike: boolean) {
+    console.log("removeEmptyBike = ", removeEmptyBike)
+    if (removeEmptyBike) {
+      this.bikes.pop();
+    }
+  } 
 
   setActiveBike(index: number) {
     this.activeBike = index;

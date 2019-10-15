@@ -2,9 +2,15 @@
   <form [formGroup]="personalInfoForm"  (ngSubmit)="onSubmit()">
     <div class="profile-block">
       <div class="profile-photo">
-        <div class="upload-new-photo">Upload New Photo</div>
-        <div class="profile-image">
-          <img mat-card-lg-image src="{{ f.photo.value }}" alt="profile-photo" class="photocard" />
+        <label class="upload-new-photo">
+          <span>Upload New Photo</span>
+          <input #imageInput
+                type="file"
+                accept="image/*"
+                (change)="processFile(imageInput)">
+        </label>
+        <div [ngClass]="{'profile-image':true, 'active-icon':!f.photo.value}">
+          <img *ngIf="!!f.photo.value" mat-card-lg-image src="{{ f.photo.value }}" alt="profile-photo" class="photocard" />
         </div>
       </div>
     </div>
@@ -41,9 +47,6 @@
         <mat-error *ngIf="f.height.errors?.required">Height is required.</mat-error>
       </mat-form-field>
     </div>
-    <div class="bottom-buttons">
-      <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
-      <button mat-raised-button color="primary" (click)="onReset()" type="reset">Discard</button>
-    </div>
+    <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
   </form>
 </section>

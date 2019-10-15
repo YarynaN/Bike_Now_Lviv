@@ -18,11 +18,11 @@ export class BikeInfoService {
   }
 
   deleteBikeItem(id: string) {
-    this.bikesData.remove(id);
+    return this.bikesData.remove(id);
   }
 
   updateBikeItem(id: string, data: Partial<BikeInfo>) {
-    this.bikesData.update(id, data);
+    return this.bikesData.update(id, data);
   }
 
   pushBikeItem(data: BikeInfo) {
