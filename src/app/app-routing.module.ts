@@ -10,14 +10,16 @@ import { HistoryComponent } from './components/my-account/history/history.compon
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', component: MainPageComponent },
+  { path: 'main-page', component: MainPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { 
+  {
     path: 'my-account',
-    component: MyAccountComponent, 
+    component: MyAccountComponent,
     canActivate: [AuthGuardService],
     children: [
       { path: '', redirectTo: '/my-account/(outlet-my-account:personal-info)', pathMatch: 'full' },
@@ -27,7 +29,6 @@ const routes: Routes = [
     ],
   },
   { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
-
   { path: '**', component: PageNotFoundComponent }
 ];
 
