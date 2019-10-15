@@ -6,13 +6,17 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'API_KEY',
+    apiKey: 'AIzaSyBOVaCDXt3F8jLICR1vZc83uRbwoE0pSHs',
     authDomain: 'bikenowlviv.firebaseapp.com',
     databaseURL: 'https://bikenowlviv.firebaseio.com',
     projectId: 'bikenowlviv',
     storageBucket: 'bikenowlviv.appspot.com/',
     messagingSenderId: '330809534181',
     appId: '1:330809534181:web:cfdefc1ec30bc273'
+  },
+  algolia: {
+    appId: 'L0RIMQ3N9M',
+    apiKey: 'd46d47318500059ef7e4a90ece2b341b'
   }
 };
 

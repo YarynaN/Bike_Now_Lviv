@@ -27,6 +27,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 /* SearchPage - InstaSearch */
 import { NgAisModule } from 'angular-instantsearch';
 
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -52,7 +53,7 @@ firebase.initializeApp(environment.firebase);
     GuestNavbarComponent
   ],
   imports: [
-    NgAisModule.forRoot(),
+    NgAisModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
