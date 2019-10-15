@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-contact-us',
@@ -8,15 +9,24 @@ import {Router} from '@angular/router';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
-  contactForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
-
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private db: AngularFireDatabase, private router: Router) {
+    this.createForm();
+  }
   ngOnInit() {
-    this.contactForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(10)]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(15)]],
+  }
+  createForm() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      message: ['', Validators.required],
     });
   }
-
+  onSubmit() {
+    const { name, email, message } = this.form.value;
+    const date = Date();
+    const formRequest = { name, email, message, date };
+    this.db.list('/messages').push(formRequest);
+    this.form.reset();
+  }
 }
