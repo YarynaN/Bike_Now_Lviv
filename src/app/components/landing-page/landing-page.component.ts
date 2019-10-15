@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class LandingPageComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
-  get userInfo(){
+  get userInfo() {
     return {
       isLogged: this.authService.isLogged,
       userInfo: this.authService.currentUser
