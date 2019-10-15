@@ -25,8 +25,8 @@ export class PersonalInfoComponent implements OnInit {
     photo: [''],
     email: ['', [Validators.required, Validators.email]],
     birthday: ['', Validators.required],
-    phone: ['', Validators.required],
-    height: ['', Validators.required]
+    phone: ['', [Validators.required, Validators.minLength(19)]],
+    height: ['', [Validators.required, Validators.min(135), Validators.max(235)]]
   });
 
   selectedFile: ImageSnippet;
@@ -102,7 +102,7 @@ export class PersonalInfoComponent implements OnInit {
 
   private onError(message) {
     this.snackBar.open(message, '', {
-      duration: 200000,
+      duration: 2000,
       panelClass: ['error-snackbar'],
       horizontalPosition: "right"
     }); 

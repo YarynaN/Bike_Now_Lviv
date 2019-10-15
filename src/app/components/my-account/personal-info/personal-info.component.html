@@ -20,21 +20,25 @@
 
     <div class="example-container">
       <mat-form-field>
-        <input matInput placeholder="Name" formControlName="name" [(ngModel)]="f.name.value"/>
+        <input matInput type="text" placeholder="Name" formControlName="name" [(ngModel)]="f.name.value"/>
         <mat-error *ngIf="f.name.errors?.required">Name is required.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Surname" formControlName="surname" [(ngModel)]="f.surname.value"/>
+        <input matInput type="text" placeholder="Surname" formControlName="surname" [(ngModel)]="f.surname.value"/>
         <mat-error *ngIf="f.surname.errors?.required">Surname is required.</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="f.email.value"/>
+        <input matInput type="email" placeholder="Email" formControlName="email" [(ngModel)]="f.email.value"/>
         <mat-error *ngIf="f.email.errors?.required">Email is required.</mat-error>
-        <mat-error *ngIf="f.email.errors?.email">Email must be a valid email address.</mat-error>
+        <mat-error *ngIf="f.email.errors?.email">Email must be a valid email address example@site.com</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone number" formControlName="phone" [(ngModel)]="f.phone.value"/>
+        <input matInput type="tel" placeholder="Phone number"
+          formControlName="phone"
+          pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}\s\d{2}\s\d{2}" minlength="19" maxlength="19"
+          [(ngModel)]="f.phone.value"/>
         <mat-error *ngIf="f.phone.errors?.required">Phone is required.</mat-error>
+        <mat-error *ngIf="f.phone.errors?.minlength">Phone number must be in the format +38 (0xx) xxx xx xx</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Date of birth(choose a date)" formControlName="birthday" [(ngModel)]="f.birthday.value"/>
@@ -43,8 +47,14 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Your height in cm" formControlName="height" [(ngModel)]="f.height.value"/>
+        <input matInput type="number" placeholder="Your height, cm"
+          min="135" max="235"
+          pattern="[0-9]{3}" minlength="3" maxlength="3"
+          formControlName="height"
+          [(ngModel)]="f.height.value"/>
         <mat-error *ngIf="f.height.errors?.required">Height is required.</mat-error>
+        <mat-error *ngIf="f.height.errors?.min">Height must be between 135 cm and 235 cm</mat-error>
+        <mat-error *ngIf="f.height.errors?.max">Height must be between 135 cm and 235 cm</mat-error>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" (click)="onSubmit()" type="submit">Save</button>
