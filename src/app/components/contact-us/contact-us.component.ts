@@ -28,7 +28,7 @@ export class ContactUsComponent implements OnInit {
     const date = Date();
     const formRequest = { name, email, message, date };
     this.db.list('/messages').push(formRequest);
-    this._snackBar.open('Your message has been sent','', { duration: 3000 });
+    this._snackBar.open('Your message has been sent','', { duration: 4000 });
     this.form.reset();
   }
 }
