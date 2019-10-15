@@ -89,7 +89,7 @@ export class BikeComponent implements OnInit {
         });
     }
 
-    this.bikeInfoService.pushBikeItem(this.bikeForm.value);
+   // this.bikeInfoService.pushBikeItem(this.bikeForm.value);
   }
 
   delete() {
@@ -144,7 +144,7 @@ export class BikeComponent implements OnInit {
       duration: 2000,
       panelClass: ['succesful-snackbar'],
       horizontalPosition: "right"
-    }); 
+    });
   }
 
   private onError(message) {
@@ -152,6 +152,6 @@ export class BikeComponent implements OnInit {
       duration: 2000,
       panelClass: ['error-snackbar'],
       horizontalPosition: "right"
-    }); 
+    });
   }
 }
