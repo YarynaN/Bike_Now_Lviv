@@ -3,6 +3,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../environments/environment';
 import {AuthService} from '../../services/auth.service';
+import {ActivatedRoute} from '@angular/router';
+import {BikeInfoService} from '../../services/bike-info.service';
+import {PersonalInfoService} from '../../services/personal-info.service';
+import {GreaterThan} from '../../helpers/validation';
 
 @Component({
   selector: 'app-order-page',
@@ -10,51 +14,86 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./order-page.component.scss']
 })
 export class OrderPageComponent implements OnInit {
+  bikeId: string;
   handler: any;
-
-  // Payment and order data
-  bikeId = '-LqjBEtSOv_jBP7bsabq';
-  amount = 2600;
-  dateFrom = '2019-10-01';
-  dateTo = '2019-10-11';
+  sub: any;
+  amount: number;
+  totalAmount: number;
+  name: string;
 
   orderForm: FormGroup = this.formBuilder.group({
-    dateFrom: ['', Validators.required],
-    dateTo: ['', Validators.required],
-    amount: ['', Validators.required],
-  });
+      dateFrom: ['', Validators.required],
+      dateTo: ['', Validators.required],
+      amount: [{value: '', disabled: true}],
+      name: [{value: '', disabled: true}],
+    },
+    {
+      validator: GreaterThan('dateFrom', 'dateTo')
+    }
+  );
 
-  constructor(private formBuilder: FormBuilder, private paymentSvc: PaymentService, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder,
+              private paymentSvc: PaymentService,
+              private authService: AuthService,
+              private route: ActivatedRoute,
+              private bikeService: BikeInfoService,
+              private personalInfoService: PersonalInfoService) {
+
+  }
 
   ngOnInit() {
-    this.orderForm.setValue({
-      dateFrom: '',
-      dateTo: '',
-      amount: '',
-    });
-
     this.handler = StripeCheckout.configure({
       key: environment.stripeKey,
       email: this.authService.currentUser.email,
       image: '/assets/payment-logo.png',
       locale: 'auto',
-      description: `Оренда велосипеда`,
-      'panel-label': 'Сплатити {{amount}}',
+      description: `Bike rental`,
+      'panel-label': 'Pay {{amount}}',
       currency: 'UAH',
       'allow-remember-me': false,
       token: token => {
-        this.paymentSvc.processOrder(token, this.amount, this.bikeId, this.dateFrom, this.dateTo);
+        const {dateFrom, dateTo} = this.orderForm.value;
+        const sDateFrom = dateFrom.toISOString();
+        const sDateTo = dateFrom.toISOString();
+
+        this.paymentSvc.processOrder(token, this.totalAmount, this.bikeId, sDateFrom, sDateTo);
       }
+    });
+
+    this.sub = this.route.params.subscribe(params => {
+      this.bikeId = params['id'];
+      this.bikeService.getBikeById(this.bikeId).subscribe((data: any) => {
+        if (data) {
+          this.amount = +data.price_rent;
+          this.personalInfoService.getUserById(data.userId).subscribe((data: any) => {
+            this.name = data.name;
+            this.orderForm.setValue({
+              dateFrom: '',
+              dateTo: '',
+              name: this.name,
+              amount: this.amount,
+            });
+          });
+        }
+      });
     });
   }
 
-  get f() { return this.orderForm.controls; }
-
   handlePayment() {
+    if (this.orderForm.invalid) {
+      return;
+    }
+
+    const {dateFrom, dateTo} = this.orderForm.value;
+    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    const diffDays = Math.round(Math.abs((dateTo - dateFrom) / oneDay));
+
+    this.totalAmount = diffDays * this.amount * 100;
+
     this.handler.open({
       name: 'Bike NOW',
-      excerpt: 'Deposit Funds to Account',
-      amount: this.amount
+      excerpt: 'Bike Rental',
+      amount: this.totalAmount
     });
   }
 

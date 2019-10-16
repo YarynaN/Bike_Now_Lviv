@@ -2,26 +2,38 @@
   <mat-card-header>
     <mat-card-title>Ordering a bicycle</mat-card-title>
   </mat-card-header>
-  <form [formGroup]="orderForm" class="order-form">
+  <form [formGroup]="orderForm" class="order-form" (ngSubmit)="handlePayment()">
     <mat-card-content>
       <h5>1. General information</h5>
+      <mat-form-field class="owner-name">
+        <input matInput placeholder="Owner Name" formControlName="name" [(ngModel)]="orderForm.controls.name.value"/>
+      </mat-form-field>
       <div class="datepickers">
         <mat-form-field>
-          <input matInput [matDatepicker]="dateFrom" placeholder="Start Date of rental">
+          <input matInput [matDatepicker]="dateFrom" placeholder="Start Date of rental" formControlName="dateFrom"
+                 [(ngModel)]="orderForm.controls.dateFrom.value">
+          <mat-error *ngIf="orderForm.controls.dateFrom.errors?.required">Start Date is required.</mat-error>
           <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
           <mat-datepicker #dateFrom></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [matDatepicker]="dateTo" placeholder="End Date of rental">
+          <input matInput [matDatepicker]="dateTo" placeholder="End Date of rental" formControlName="dateTo"
+                 [(ngModel)]="orderForm.controls.dateTo.value">
+          <mat-error *ngIf="orderForm.controls.dateTo.errors?.required">End Date is required.</mat-error>
+          <mat-error *ngIf="orderForm.controls.dateTo.errors?.LessThan">Incorrect End Date</mat-error>
           <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
           <mat-datepicker #dateTo></mat-datepicker>
         </mat-form-field>
       </div>
-      <mat-form-field  class="your-amount">
-        <input matInput placeholder="Your amount" formControlName="amount" [(ngModel)]="f.amount.value"/>
-      </mat-form-field>
+      <div>
+        <mat-form-field class="your-amount">
+          <input matInput placeholder="Price per day" formControlName="amount"
+                 [(ngModel)]="orderForm.controls.amount.value"/>
+        </mat-form-field>
+      </div>
     </mat-card-content>
-    <button mat-raised-button color="primary" (click)="handlePayment()" >Order</button>
+    <button mat-raised-button color="primary" type="submit">Order</button>
     <button mat-raised-button color="primary">Cancel</button>
   </form>
 </mat-card>
+

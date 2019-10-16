@@ -34,4 +34,8 @@ export class BikeInfoService {
     return this.db.list(this.bikePath, ref => ref.orderByChild('userId')
       .equalTo(this.userId)).snapshotChanges();
   }
+
+  getBikeById(id: string) {
+    return this.db.object(`${this.bikePath}/${id}`).valueChanges();
+  }
 }
