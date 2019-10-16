@@ -1,5 +1,5 @@
 <section  class="container">
-  <form [formGroup]="personalInfoForm"  (ngSubmit)="onSubmit()">
+  <form [formGroup]="personalInfoForm">
     <div class="profile-block">
       <div class="profile-photo">
         <label class="upload-new-photo">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <button mat-raised-button color="primary" (click)="order()" class="rent-bike-button">
+    <button mat-raised-button color="primary" routerLink="/search" class="rent-bike-button">
       I want to rent a bike
     </button>
 

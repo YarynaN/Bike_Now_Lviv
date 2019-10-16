@@ -87,9 +87,16 @@ export class BikeComponent implements OnInit {
         (err) => {
           this.onError(`Bike Info Failed!`);
         });
-    }
 
-   // this.bikeInfoService.pushBikeItem(this.bikeForm.value);
+    } else {
+      this.bikeInfoService.pushBikeItem(this.bikeForm.value)
+        .then((res) => {
+          this.onSuccess(`Bike Info saved succesfuly!`);
+        },
+        (err) => {
+          this.onError(`Bike Info Failed!`);
+        });
+    }
   }
 
   delete() {

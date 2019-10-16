@@ -26,7 +26,7 @@ export class BikeInfoService {
   }
 
   pushBikeItem(data: BikeInfo) {
-    this.bikesData.push({ userId: this.userId, ...data });
+    return this.bikesData.push({ userId: this.userId, ...data });
   }
 
   getBikesList() {

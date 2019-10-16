@@ -59,11 +59,9 @@ export class BikesInfoComponent implements OnInit {
       price_rent: ''
     });
     this.setActiveBike(this.bikes.length - 1);
-    this.bikeInfoService.pushBikeItem(this.bikeForm.value);
   }
 
   removeEmptyBike(removeEmptyBike: boolean) {
-    console.log('removeEmptyBike = ', removeEmptyBike);
     if (removeEmptyBike) {
       this.bikes.pop();
     }
