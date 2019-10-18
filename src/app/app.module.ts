@@ -17,7 +17,6 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
@@ -46,7 +45,6 @@ firebase.initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    LandingPageComponent,
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
