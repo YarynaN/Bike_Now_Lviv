@@ -28,6 +28,7 @@ import { PersonalInfoComponent } from './components/my-account/personal-info/per
 import { BikeComponent } from './components/my-account/bikes-info/bike/bike.component';
 import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-info.component';
 import { HistoryComponent } from './components/my-account/history/history.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -55,7 +56,8 @@ firebase.initializeApp(environment.firebase);
     PersonalInfoComponent,
     BikeComponent,
     BikesInfoComponent,
-    HistoryComponent
+    HistoryComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserAnimationsModule,

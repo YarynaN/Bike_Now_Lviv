@@ -10,6 +10,7 @@ import { HistoryComponent } from './components/my-account/history/history.compon
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     ],
   },
   { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
+  { path: 'contact-us', component: ContactUsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
