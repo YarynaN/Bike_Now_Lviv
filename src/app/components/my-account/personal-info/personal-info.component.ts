@@ -4,6 +4,14 @@ import { PersonalInfoService } from '../../../services/personal-info.service';
 import { PersonalInfo } from '../../../models/personal-info.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+class ImageSnippet {
+  pending: boolean = false;
+  status: string = 'init';
+
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-personal-info',
@@ -17,12 +25,18 @@ export class PersonalInfoComponent implements OnInit {
     photo: [''],
     email: ['', [Validators.required, Validators.email]],
     birthday: ['', Validators.required],
-    phone: ['', Validators.required],
-    height: ['', Validators.required]
+    phone: ['', [Validators.required, Validators.minLength(19)]],
+    height: ['', [Validators.required, Validators.min(135), Validators.max(235)]]
   });
 
-  constructor(private formBuilder: FormBuilder, private personalInfoService: PersonalInfoService, private authService: AuthService) {
-  }
+  selectedFile: ImageSnippet;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private personalInfoService: PersonalInfoService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.personalInfoService.getUserItem().subscribe((data: any) => {
@@ -48,10 +62,50 @@ export class PersonalInfoComponent implements OnInit {
       return;
     }
 
-    this.personalInfoService.updateUserItem(this.personalInfoForm.value);
+    this.personalInfoService.updateUserItem(this.personalInfoForm.value)
+      .then((res) => {
+        this.onSuccess(`Data saved succesfuly!`);
+      },
+      (err) => {
+        this.onError(`Something went wrong!`);
+      });
   }
 
-  onReset() {
-    console.log('reset');
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFile.pending = true;
+
+      this.personalInfoService.updateUserItem({photo: this.selectedFile.src})
+        .then((res) => {
+            this.onSuccess(`Image Uploaded Succesfuly!`);
+          },
+          (err) => {
+            this.onError(`Image Upload Failed!`);
+          })
+    });
+
+    reader.readAsDataURL(file);
   }
+
+  private onSuccess(message) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+      panelClass: ['succesful-snackbar'],
+      horizontalPosition: "right"
+    }); 
+  }
+
+  private onError(message) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+      panelClass: ['error-snackbar'],
+      horizontalPosition: "right"
+    }); 
+  }
+
 }

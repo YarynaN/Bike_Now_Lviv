@@ -17,7 +17,7 @@ export class PersonalInfoService {
   }
 
   updateUserItem(data: any) {
-    this.usersData.update(this.uid, { ...data });
+    return this.usersData.update(this.uid, { ...data });
   }
 
   getUserItem() {
