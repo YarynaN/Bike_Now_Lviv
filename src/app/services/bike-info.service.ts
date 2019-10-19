@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BikeInfo } from '../models/bike-info.model';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root'

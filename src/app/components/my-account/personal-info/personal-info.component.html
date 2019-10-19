@@ -35,10 +35,10 @@
       <mat-form-field>
         <input matInput type="tel" placeholder="Phone number"
           formControlName="phone"
-          pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}\s\d{2}\s\d{2}" minlength="19" maxlength="19"
+          pattern="[\+]\d{12}" minlength="13" maxlength="13"
           [(ngModel)]="f.phone.value"/>
         <mat-error *ngIf="f.phone.errors?.required">Phone is required.</mat-error>
-        <mat-error *ngIf="f.phone.errors?.minlength">Phone number must be in the format +38 (0xx) xxx xx xx</mat-error>
+        <mat-error *ngIf="f.phone.errors?.minlength">Phone number must be in the format +380xxxxxxxxx</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput [matDatepicker]="picker" placeholder="Date of birth(choose a date)" formControlName="birthday" [(ngModel)]="f.birthday.value"/>

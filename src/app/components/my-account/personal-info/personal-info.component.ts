@@ -25,7 +25,7 @@ export class PersonalInfoComponent implements OnInit {
     photo: [''],
     email: ['', [Validators.required, Validators.email]],
     birthday: ['', Validators.required],
-    phone: ['', [Validators.required, Validators.minLength(19)]],
+    phone: ['', [Validators.required, Validators.minLength(13)]],
     height: ['', [Validators.required, Validators.min(135), Validators.max(235)]]
   });
 

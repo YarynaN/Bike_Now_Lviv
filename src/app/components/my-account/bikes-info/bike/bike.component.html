@@ -78,12 +78,13 @@
     </mat-form-field>
     <mat-form-field>
       <input matInput type="number" placeholder="Rental price (24 hours), UAN"
-        max="999"
+        max="999" min="50"
         pattern="[0-9]{1,3}" minlength="1" maxlength="3"
         formControlName="price_rent"
         [(ngModel)]="f.price_rent.value"/>
       <mat-error *ngIf="f.price_rent.errors?.required">Rental price is required.</mat-error>
       <mat-error *ngIf="f.price_rent.errors?.max">Sorry, it is a very high price.</mat-error>
+      <mat-error *ngIf="f.price_rent.errors?.min">Sorry, it is for a low amount.</mat-error>
     </mat-form-field>
   </div>
   <div class="bike-images">

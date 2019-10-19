@@ -29,4 +29,8 @@ export class PersonalInfoService {
   getUserById(id: string) {
     return this.db.object(`${this.userPath}/${id}`).valueChanges();
   }
+
+  getUserById(id: string) {
+    return this.db.object(`${this.userPath}/${id}`).valueChanges();
+  }
 }

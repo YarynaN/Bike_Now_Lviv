@@ -37,7 +37,7 @@ export class BikeComponent implements OnInit {
     speeds: ['', Validators.required],
     brakes: ['', Validators.required],
     diameter_wheels: ['', Validators.required],
-    price_rent: ['', [Validators.required, Validators.max(999)]],
+    price_rent: ['', [Validators.required, Validators.max(999), Validators.min(50)]],
   });
 
   selectedFile: ImageSnippet;
