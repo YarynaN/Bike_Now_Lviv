@@ -1,0 +1,19 @@
+<section  class="container">
+  <mat-acordion multi="true">
+    <mat-expansion-panel *ngFor="let bike of bikes; let idx = index"
+      [expanded]="activeBike === idx"
+      (opened)="setActiveBike(idx)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ getTitleBike(bike) }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="example-container">
+        <app-bike [bike]="bike" (removeLastEmptyBike)="removeEmptyBike($event)"></app-bike>
+      </div>
+    </mat-expansion-panel>
+  </mat-acordion>
+  <button mat-fab color="primary" (click)="addBikePanel()"
+      matTooltip="Add bike"
+      aria-label="Button that displays a tooltip when focused over">+</button>
+</section>

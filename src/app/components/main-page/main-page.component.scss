@@ -1,0 +1,381 @@
+// @import '../../../assets/css/bike-preview.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+$base-color: #006FFD;
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.9;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgimg-1 {
+  background-image: url("../../../assets/img/background1.jpg");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("../../../assets/img/background2.jpg");
+  min-height: 500px;
+}
+
+.bgimg-3 {
+  background-image: url("../../../assets/img/background3.jpg");
+  min-height: 650px;
+}
+.caption-top {
+  position: absolute;
+  top: 20%;
+  text-align: left;
+  color: $base-color;
+  margin-left: 4em;
+}
+@media only screen and (max-device-width: 360px) {
+  .caption-top {
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    color: $base-color;
+    margin-left: 5em;
+  }
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 60%;
+  width: 99%;
+  text-align: center;
+  color: $base-color;
+}
+
+.caption span.border {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  background: rgba(0,111,253, 0.5);
+  color: #fff;
+  padding: 5px;
+  font-size: 2em;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+  font-weight: 500;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: $base-color;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+.top-div {
+   color: #777;
+  background-color:white;
+  padding:50px 80px;
+  text-align: justify;
+}
+
+.middle-div {
+  color:#ddd;
+  background-color:#282E34;
+  padding:50px 80px;
+  text-align: justify;
+}
+
+.bottom-div {
+  color:#ddd;
+  background-color:#282E34;
+  padding:50px 80px;
+  text-align: justify;
+}
+
+.border {
+  background-color:transparent;
+  font-size:25px;
+  color: #f7f7f7;
+}
+
+.slogan {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  background: rgba(0, 111, 253, 0.5);
+  color: #fff;
+  padding: 5px 5px;
+  font-size: 25px;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+  line-height: 1.7em;
+  font-weight: 500;
+}
+
+.logo {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  color: black;
+  padding: 2px;
+  font-size: 35px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+#logo-text1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0px 4px;
+}
+
+#logo-text2 {
+  background-color: #FEF303;
+  background-size: 149%;
+  height: 156%;
+  margin: 0px;
+  padding: 3px;
+}
+
+#logo-text3 {
+  color: white;
+  position: relative;
+  top: -2em;
+  left: -1em;
+  padding-top: 12px;
+  font-size: 50%;
+  height: 33px;
+  width: 45px;
+  background-color: $base-color;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.superscript {
+  position: relative;
+  top: -0.5em;
+  font-size: 80%;
+}
+.about-service {
+  text-align: center;
+}
+.review {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: auto;
+}
+.example-header-image {
+  background-image: url("../../../assets/img/client1.png");
+  background-size: cover;
+}
+.example-card {
+  width: 60%;
+  height: 20rem;
+}
+.mat-card-header {
+  padding-left: 7rem;
+  padding-top: 1.2rem;
+  height: 8rem;
+}
+.mat-card-content {
+  align-content: center;
+  width: 60%;
+  margin-left: 10rem;
+  padding-bottom: 1rem;
+}
+.comment {
+  line-height: 2rem;
+  font-size: 1.2rem;
+}
+.relative{
+  position:relative;
+}
+.centered{
+  text-align:center;
+}
+
+// bike css
+@media (min-width: 768px) {
+  .col-md-3 {
+    -ms-flex: 0 0 25%;
+    -webkit-box-flex: 0;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-6 {
+    -ms-flex: 0 0 50%;
+    -webkit-box-flex: 0;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.cards-block{
+  background-color: transparent;/*#D2DBDD;*/
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  max-width: 860px;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    display: block;
+  }
+}
+.card--1 .card__img, .card--1 .card__img--hover {
+  background-image: url('../../../assets/img/bike1.png');
+}
+
+.card--2 .card__img, .card--2 .card__img--hover {
+  background-image: url('../../../assets/img/bike2.png');
+}
+
+.card--3 .card__img, .card--3 .card__img--hover {
+  background-image: url('../../../assets/img/bike3.png');
+}
+
+.card__like {
+  width: 18px;
+}
+
+.card__clock {
+  width: 15px;
+  vertical-align: middle;
+  fill: #AD7D52;
+}
+.card__time {
+  font-size: 12px;
+  color: #AD7D52;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.card__clock-info {
+  float: right;
+}
+
+.card__img {
+  visibility: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 235px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card__info-hover {
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+}
+
+.card__img--hover {
+  transition: 0.2s all ease-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: absolute;
+  height: 235px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  top: 0;
+}
+.card {
+  margin-right: 25px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+.card:hover {
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+  transform: scale(1.10, 1.10);
+}
+
+.card__info {
+  z-index: 2;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #868686;
+}
+
+.card__title {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.card__by {
+  font-size: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+.card__author {
+  font-weight: 600;
+  text-decoration: none;
+  color: #AD7D52;
+}
+
+.card:hover .card__img--hover {
+  height: 100%;
+  opacity: 0.3;
+}
+
+.card:hover .card__info {
+  background-color: transparent;
+  position: relative;
+}
+
+.card:hover .card__info-hover {
+  opacity: 1;
+}
+
+.card_link_noUnder{
+  text-decoration: none;
+}

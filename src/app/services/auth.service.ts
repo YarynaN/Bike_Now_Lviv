@@ -21,15 +21,18 @@ export class AuthService {
   }
 
   doRegister(email: string, password: string){
+    this.doLogout();
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
+          this._isLogged = true;
           resolve(res);
         }, err => reject(err));
     });
   }
 
   doSignIn(email: string, password: string){
+    this.doLogout();
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
