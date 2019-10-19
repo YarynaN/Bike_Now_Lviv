@@ -39,7 +39,7 @@ export class AuthService {
     });
   }
 
-  doLogout(){
+  public doLogout(){
     this._isLogged = false;
     firebase.auth().signOut();
   }

@@ -9,11 +9,11 @@ import * as algoliasearch from 'algoliasearch';
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
 const index = client.initIndex('qwe');
 
-exports.indexBike = functions.firestore
-    .document('bikes/{bikeId}')
+exports.indexBike = functions.database  
+    .ref('bikes/{bikeId}')
     .onCreate((snap, context) => {
-        const data = snap.data();
-        const objectID = snap.id;
+        const data = snap.val();
+        const objectID = snap.key;
 
         // Add the data to the algolia index
         return index.addObject({
@@ -22,10 +22,10 @@ exports.indexBike = functions.firestore
         });
     });
 
-exports.unindexBike = functions.firestore
-    .document('bikes/{bikeId}')
+exports.unindexBike = functions.database
+    .ref('bikes/{bikeId}')
     .onDelete((snap, context) => {
-        const objectId = snap.id;
+        const objectId = snap.key;
 
         // Delete an ID from the index
         return index.deleteObject(objectId);
@@ -36,6 +36,3 @@ exports.unindexBike = functions.firestore
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });

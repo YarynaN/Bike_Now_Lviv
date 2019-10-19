@@ -1,13 +1,6 @@
-//import { Component, OnInit } from '@angular/core';
-//import * as algoliasearch from 'algoliasearch/lite';
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
-
-
-// const searchClient = algoliasearch(
-//   'L0RIMQ3N9M',
-//   'd46d47318500059ef7e4a90ece2b341b'
-// );
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-search-page',
@@ -22,13 +15,20 @@ export class SearchPageComponent {
 
   showResults = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   searchChanged(query) {
     if (query.length) {
       this.showResults = true;
     } else {
       this.showResults = false;
+    }
+  }
+  get status() {
+    if (this.authService.isLogged) {
+      return true
+    } else {
+      return false;
     }
   }
 }

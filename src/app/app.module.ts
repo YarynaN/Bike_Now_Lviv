@@ -38,6 +38,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
 import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 
+
 firebase.initializeApp(environment.firebase);
 
 @NgModule({
