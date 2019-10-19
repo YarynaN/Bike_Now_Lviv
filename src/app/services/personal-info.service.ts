@@ -21,6 +21,7 @@ export class PersonalInfoService {
   }
 
   getUserItem() {
+    this.uid = this.auth.currentUser.uid;
     return this.db.object(`${this.userPath}/${this.uid}`).valueChanges();
   }
 }

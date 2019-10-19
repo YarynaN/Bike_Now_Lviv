@@ -20,7 +20,7 @@ export class AuthService {
     return firebase.auth().currentUser;
   }
 
-  doRegister(email: string, password: string){
+  doRegister(email: string, password: string) {
     this.doLogout();
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -31,7 +31,7 @@ export class AuthService {
     });
   }
 
-  doSignIn(email: string, password: string){
+  doSignIn(email: string, password: string) {
     this.doLogout();
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(email, password)
@@ -42,7 +42,7 @@ export class AuthService {
     });
   }
 
-  public doLogout(){
+  public doLogout() {
     this._isLogged = false;
     firebase.auth().signOut();
   }
