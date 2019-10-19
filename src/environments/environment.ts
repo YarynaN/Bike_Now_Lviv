@@ -13,6 +13,10 @@ export const environment = {
     storageBucket: 'bikenowlviv.appspot.com/',
     messagingSenderId: '330809534181',
     appId: '1:330809534181:web:cfdefc1ec30bc273'
+  },
+  algolia: {
+    appId: 'L0RIMQ3N9M',
+    apiKey: 'd46d47318500059ef7e4a90ece2b341b'
   }
 };
 

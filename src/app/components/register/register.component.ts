@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['my-account']);
       }, err => {
         this.snackBar.open(`Sorry, we could not register you. ${err.message}`, 'ok', {
-          duration: 2000,
+          duration: 3000,
         });
       });
   }

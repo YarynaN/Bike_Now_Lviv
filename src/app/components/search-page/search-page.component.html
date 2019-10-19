@@ -1,1 +1,75 @@
-<p>search-page works!</p>
+<div class="wrapper">
+    <div class="search">
+        <ais-instantsearch class="search-container" [config]="searchConfig">
+
+            <div class="filters-container">
+                <div class="filters">
+                    <h4>Brand:</h4>
+                    <ais-refinement-list attribute="brand"></ais-refinement-list>
+                    <hr>
+                    <h4>Size:</h4>
+                    <ais-refinement-list attribute="sizes"></ais-refinement-list>
+                    <hr>
+                    <h4>Wheels diameter:</h4>
+                    <ais-refinement-list attribute="diameter_wheels"></ais-refinement-list>
+                    <hr>
+                    <h4>Categories:</h4>
+                    <ais-refinement-list attribute="categories"></ais-refinement-list>
+                    <hr>
+                    <h4>Price:</h4>
+                    <ais-refinement-list attribute="price_rent"></ais-refinement-list>
+                </div>
+                <ais-clear-refinements class="refinements"></ais-clear-refinements>
+            </div>
+            <div class="search-results">
+                <h1>Search your bicycle!</h1>
+                <ais-search-box>
+
+                </ais-search-box>
+
+                <ais-hits>
+
+                    <ng-template let-hits="hits">
+
+                        <div class='element' *ngFor="let hit of hits">
+                            <img src="{{hit.image}}" alt="{{hit.name}}" align="left" class="element-image" />
+                            <div class="element-info">
+                                <div class="el-head">
+                                    <h4 class="brand">
+                                        <ais-highlight attribute="brand" [hit]="hit"></ais-highlight>
+                                    </h4>
+                                    <p class="price">
+                                        <b>{{hit.price_rent}} UAH/day </b>
+                                    </p>
+                                </div>
+                                <div class="desc">
+                                    <div class="tech">
+                                        <span class="param">Model: </span>{{hit.model}}
+                                        <br>
+                                        <span class="param">Category: </span>{{hit.categories}}
+                                        <br>
+                                        <span class="param">Color: </span>
+                                        <ais-highlight attribute="color" [hit]="hit"></ais-highlight>
+                                        <br>
+                                        <span class="param">Wheels diameter: </span>{{hit.diameter_wheels}}
+                                        <br>
+                                        <span class="param">Speeds: </span>{{hit.speeds}}
+                                        <br>
+                                        <span class="param">Brakes: </span>{{hit.brakes}}
+                                        <br>
+                                        <span class="param">Frames: </span> {{hit.frames}}
+                                        <br>
+                                        <span class="param">Weight: </span>{{hit.weight}}
+                                    </div>
+                                    <button class="order-button" routerLink='/order-page/{{hit.objectID}}'>Order
+                                        now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ais-hits>
+                <ais-pagination></ais-pagination>
+            </div>
+        </ais-instantsearch>
+    </div>
+</div>

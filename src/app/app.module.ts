@@ -29,6 +29,10 @@ import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-inf
 import { HistoryComponent } from './components/my-account/history/history.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
+/* SearchPage - InstaSearch */
+import { NgAisModule } from 'angular-instantsearch';
+
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -37,8 +41,11 @@ import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
+import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { PersonalInfoService } from './services/personal-info.service';
+
 
 firebase.initializeApp(environment.firebase);
 
@@ -50,14 +57,18 @@ firebase.initializeApp(environment.firebase);
     MyAccountComponent,
     SearchPageComponent,
     RegisterComponent,
+    LoggedNavbarComponent,
+    GuestNavbarComponent
     MainPageComponent,
     PersonalInfoComponent,
     BikeComponent,
     BikesInfoComponent,
     HistoryComponent,
     ContactUsComponent
+
   ],
   imports: [
+    NgAisModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
     FormsModule,
