@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
       text: '" Me and my wife been to Lviv on 3 days trip. We always wish to travel and like to dig deep inside the local culture ' +
         'and traditions. We rented bikes using this service and it helped us to see much more."'},
     { image: '../../../assets/img/client3.png', name: 'Max Yablonskiy', position: 'Global research analists',
-      text: '"I love riding a bikes but I do not own one that is why I am using BikeNow, it is super easy to rent a bike for a day' +
+      text: '"I love riding bikes but I do not own one that is why I am using BikeNow, it is super easy to rent a bike for a day' +
         ' or even more if you want to! "'},
     { image: '../../../assets/img/client4.png', name: 'Bohdan Kostyuk', position: 'Software Developer',
       text: '"This service is bringing me a lot of money as I use it to share my bicycle with other people for money. ' +
