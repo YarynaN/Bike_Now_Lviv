@@ -24,12 +24,5 @@ export class SearchPageComponent {
       this.showResults = false;
     }
   }
-  get status() {
-    if (this.authService.isLogged) {
-      return true
-    } else {
-      return false;
-    }
-  }
 }
 
