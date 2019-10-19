@@ -12,7 +12,7 @@
                       <mat-error *ngIf="loginForm.controls.email.errors?.email">Email must be a valid email address.</mat-error>
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <input formControlName="password" matInput placeholder="Password" />
+                        <input formControlName="password" matInput placeholder="Password" type="password"/>
                         <mat-error *ngIf="loginForm.controls.password.errors?.required">Password is required</mat-error>
                         <mat-error *ngIf="loginForm.controls.password.errors?.minlength">Password must be at least 6 characters</mat-error>
                     </mat-form-field>

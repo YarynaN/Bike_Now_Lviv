@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PersonalInfoComponent } from './components/my-account/personal-info/personal-info.component';
@@ -10,6 +9,7 @@ import { HistoryComponent } from './components/my-account/history/history.compon
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
@@ -29,6 +29,9 @@ const routes: Routes = [
     ],
   },
   { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuardService] },
+  { path: 'search', component: SearchPageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

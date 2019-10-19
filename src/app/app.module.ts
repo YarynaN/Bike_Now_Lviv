@@ -17,7 +17,6 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
@@ -28,6 +27,7 @@ import { PersonalInfoComponent } from './components/my-account/personal-info/per
 import { BikeComponent } from './components/my-account/bikes-info/bike/bike.component';
 import { BikesInfoComponent } from './components/my-account/bikes-info/bikes-info.component';
 import { HistoryComponent } from './components/my-account/history/history.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -46,7 +46,6 @@ firebase.initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    LandingPageComponent,
     LoginComponent,
     MyAccountComponent,
     SearchPageComponent,
@@ -55,7 +54,8 @@ firebase.initializeApp(environment.firebase);
     PersonalInfoComponent,
     BikeComponent,
     BikesInfoComponent,
-    HistoryComponent
+    HistoryComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserAnimationsModule,

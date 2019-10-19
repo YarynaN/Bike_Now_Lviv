@@ -30,6 +30,7 @@ export interface WheelsBikes {
 
 export interface BikeInfo {
   id?: string;
+  images?: string[];
   brand: string;
   model: string;
   categories: string;
