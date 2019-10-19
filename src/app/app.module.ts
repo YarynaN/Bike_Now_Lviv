@@ -58,7 +58,7 @@ firebase.initializeApp(environment.firebase);
     SearchPageComponent,
     RegisterComponent,
     LoggedNavbarComponent,
-    GuestNavbarComponent
+    GuestNavbarComponent,
     MainPageComponent,
     PersonalInfoComponent,
     BikeComponent,
