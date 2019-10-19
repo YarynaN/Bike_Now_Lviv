@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.doRegister(value.email, value.password)
       .then(res => {
-        this.router.navigate(['my-account/personal-info']);
+        this.router.navigate(['my-account']);
       }, err => {
         this.snackBar.open(`Sorry, we could not register you. ${err.message}`, 'ok', {
           duration: 2000,
