@@ -3,10 +3,11 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../environments/environment';
 import {AuthService} from '../../services/auth.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BikeInfoService} from '../../services/bike-info.service';
 import {PersonalInfoService} from '../../services/personal-info.service';
 import {GreaterThan} from '../../helpers/validation';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-order-page',
@@ -37,7 +38,10 @@ export class OrderPageComponent implements OnInit {
               private authService: AuthService,
               private route: ActivatedRoute,
               private bikeService: BikeInfoService,
-              private personalInfoService: PersonalInfoService) {
+              private personalInfoService: PersonalInfoService,
+              private router: Router,
+              private snackBar: MatSnackBar
+  ) {
 
   }
 
@@ -57,6 +61,11 @@ export class OrderPageComponent implements OnInit {
         const sDateTo = dateFrom.toISOString();
 
         this.paymentSvc.processOrder(token, this.totalAmount, this.bikeId, sDateFrom, sDateTo);
+        this.router.navigate(['/']);
+        this.snackBar.open('🤑 Payment being processed.', 'ok', {
+          duration: 2000,
+          panelClass: ['blue-snackbar']
+        });
       }
     });
 

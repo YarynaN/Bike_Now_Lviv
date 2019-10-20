@@ -26,7 +26,7 @@ export class LoggedNavbarComponent implements OnInit {
 
   tryLogout() {
     this.authService.doLogout().then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/']);
     });
   }
 }
