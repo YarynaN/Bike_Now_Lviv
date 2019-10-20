@@ -7,6 +7,7 @@ import { brands } from '../bikes-info/bike/constantsBikeInfo';
 import { sizes } from '../bikes-info/bike/constantsBikeInfo';
 import { diameterWheels } from '../bikes-info/bike/constantsBikeInfo';
 import { PersonalInfo } from '../../../models/personal-info.model';
+import { flatten } from 'lodash';
 
 import * as moment from 'moment';
 
@@ -19,28 +20,87 @@ export class HistoryComponent implements OnInit {
   orders: any[] = [];
   displayedColumns: string[] = ['position', 'bikeId', 'id', 'to', 'amount'];
 
-  constructor(private paymentService: PaymentService, private bikeInfoService: BikeInfoService, private personalInfoService: PersonalInfoService) { }
+  constructor(
+    private paymentService: PaymentService,
+    private bikeInfoService: BikeInfoService,
+    private personalInfoService: PersonalInfoService
+  ) { }
 
-  ngOnInit() {
-    
-    this.paymentService.getOrderList()
-      .subscribe((data: any) => {
-        this.orders = data.map(o => ({ id: o.payload.key, ...o.payload.val() }))
-          .map(order => {
-            order.from = moment(order.from).format('MM/DD/YYYY');
-            order.to = moment(order.to).format('MM/DD/YYYY');
-            order.amount /= 100;
-            this.bikeInfoService.getBikeById(order.bikeId).subscribe((bike: BikeInfo) => {
-              order['bike'] = {...bike, image: bike.images[0], images: []};
+  private getOrders(data) {
+    return data.map(o => ({ id: o.payload.key, ...o.payload.val() }))
+      .map(order => {
+        order['type'] = 'order';
+        this.bikeInfoService.getBikeById(order.bikeId).subscribe((bike: BikeInfo) => {
+          order['bike'] = {...bike, image: bike.images[0], images: []};
 
-              this.personalInfoService.getUserById(bike.userId).subscribe((user: PersonalInfo) => {
-                order['user'] = { ...user, photo: ''};
+          this.personalInfoService.getUserById(bike.userId).subscribe((user: PersonalInfo) => {
+            order['user'] = { ...user, photo: ''};
+          })
+        });
+
+        return order;
+      });
+  }
+
+  private getReservations(data) {
+    return flatten(data.map(o => ({ id: o.payload.key, ...o.payload.val() }))
+      .map((bike: BikeInfo) => {
+        let order;
+
+        if (bike.reservations) {
+          order = Object.values(bike.reservations);
+
+          if (order.length) {  
+            order.map((reservation: any) => {
+              reservation['type'] = 'reservation';
+              reservation['bike'] = {...bike, image: bike.images[0], images: []};
+
+              this.personalInfoService.getUserById(reservation.orderedBy).subscribe((user: PersonalInfo) => {
+                reservation['user'] = { ...user, photo: ''};
               })
             });
-            return order;
-          });
-          console.log(this.orders)
+          }
+
+          return order;
+        }
+      }).filter(item => item !== undefined)
+    );
+  }
+
+  private formatData(arr) {
+    arr.forEach(item => {
+      item.from = moment(item.from).format('MM/DD/YYYY');
+      item.to = moment(item.to).format('MM/DD/YYYY');
+      item.amount /= 100;
+    });
+
+    return arr;
+  }
+
+  private sortData(arr) {
+    arr.sort((a, b) => (new Date(a.from)).getTime() - (new Date(b.from)).getTime());
+    
+    return arr;
+  }
+
+  ngOnInit() {
+    // For person who booking bicycles
+    this.paymentService.getOrderList()
+      .subscribe((data: any) => {  
+        this.orders = this.sortData([
+          ...this.orders,
+          ...this.formatData(this.getOrders(data))
+        ]);  
       });
+
+      // For person who add bicycles to rent
+      this.bikeInfoService.getBikesList()
+        .subscribe((data: any) => {
+          this.orders = this.sortData([
+            ...this.orders, 
+            ...this.formatData(this.getReservations(data))
+          ]);
+        })
   }
 
   getPropertiesBike(bike: BikeInfo) {

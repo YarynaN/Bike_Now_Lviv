@@ -43,4 +43,5 @@ export interface BikeInfo {
   brakes: string;
   diameter_wheels: string;
   price_rent: string;
+  reservations?: any[];
 }
