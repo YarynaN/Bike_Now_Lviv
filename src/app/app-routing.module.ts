@@ -29,10 +29,8 @@ const routes: Routes = [
       { path: 'history', component: HistoryComponent, outlet: 'outlet-my-account', canActivate: [AuthGuardService] },
     ],
   },
-  { path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService] },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuardService] },
   { path: 'search', component: SearchPageComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   { path: 'order-page/:id', component: OrderPageComponent, canActivate: [AuthGuardService]},
   { path: '**', component: PageNotFoundComponent }
 ];

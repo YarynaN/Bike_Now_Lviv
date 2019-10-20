@@ -32,7 +32,7 @@
                     <ng-template let-hits="hits">
 
                         <div class='element' *ngFor="let hit of hits">
-                            <img src="{{hit.image}}" alt="{{hit.name}}" align="left" class="element-image" />
+                            <img src="{{apiPath}}/api/bike-photo/{{hit.objectID}}" alt="{{hit.name}}" align="left" class="element-image" />
                             <div class="element-info">
                                 <div class="el-head">
                                     <h4 class="brand">

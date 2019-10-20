@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import * as firebase from 'firebase';
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-logged-navbar',
