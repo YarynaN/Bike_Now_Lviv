@@ -97,7 +97,7 @@ export class PersonalInfoComponent implements OnInit {
       duration: 2000,
       panelClass: ['succesful-snackbar'],
       horizontalPosition: "right"
-    }); 
+    });
   }
 
   private onError(message) {
@@ -105,7 +105,7 @@ export class PersonalInfoComponent implements OnInit {
       duration: 2000,
       panelClass: ['error-snackbar'],
       horizontalPosition: "right"
-    }); 
+    });
   }
 
 }

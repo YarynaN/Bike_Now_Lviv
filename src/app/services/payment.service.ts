@@ -6,10 +6,12 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class PaymentService {
   payments: AngularFireList<any>;
-  private uid: string;
+
+  get uid(): string {
+    return this.auth.currentUser.uid;
+  }
 
   constructor(private auth: AuthService, private db: AngularFireDatabase) {
-    this.uid = this.auth.currentUser.uid;
     this.payments = db.list(`/orders/${this.uid}`);
   }
 

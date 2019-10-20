@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs';
 
@@ -6,16 +6,23 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn: Observable<boolean> = null;
+
   constructor() {
   }
 
   public get isLogged(): Observable<boolean> {
-    return new Observable(observer => {
+    if (this.isLoggedIn) {
+      return this.isLoggedIn;
+    };
+
+    this.isLoggedIn = new Observable(observer => {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
-          observer.next(!!user);
+        observer.next(!!user);
       });
     });
   }
+
   public get currentUser(): any {
     return firebase.auth().currentUser;
   }
@@ -41,6 +48,6 @@ export class AuthService {
   }
 
   public doLogout() {
-    firebase.auth().signOut();
+    return firebase.auth().signOut();
   }
 }

@@ -8,8 +8,8 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   constructor(private authService: AuthService) { }
-  get userInfo() {
-    return { isLogged: this.authService.isLogged }
+  get isLogged() {
+    return this.authService.isLogged;
   }
   title = 'bikeNowLviv';
 }

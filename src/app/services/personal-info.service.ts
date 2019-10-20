@@ -7,13 +7,15 @@ import { AuthService } from './auth.service';
 })
 export class PersonalInfoService {
   usersData: AngularFireList<any>;
-  private uid: string;
 
   private readonly userPath: string = '/usersData';
 
+  get uid(): string {
+    return this.auth.currentUser.uid;
+  }
+
   constructor(private auth: AuthService, private db: AngularFireDatabase) {
     this.usersData = db.list(this.userPath);
-    this.uid = this.auth.currentUser.uid;
   }
 
   updateUserItem(data: any) {
