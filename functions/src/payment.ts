@@ -1,12 +1,11 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
-admin.initializeApp(functions.config().firebase);
-
 const stripe = require('stripe')(functions.config().stripe.testkey);
 
-exports.stripeCharge = functions.database
+export const stripeCharge = functions.database
   .ref('/orders/{userId}/{paymentId}')
+  // @ts-ignore
   .onWrite((change, context) => {
     const payment = change.after.val();
     const userId = context.params.userId;
@@ -18,6 +17,7 @@ exports.stripeCharge = functions.database
     return admin.database()
       .ref(`/users/${userId}`)
       .once('value')
+      // @ts-ignore
       .then(snapshot => {
         return admin.database()
           .ref(`/orders/${userId}/${paymentId}`)
@@ -26,6 +26,7 @@ exports.stripeCharge = functions.database
             return snapshot.val();
           })
       })
+      // @ts-ignore
       .then(customer => {
         const {amount, bikeId, from, to} = payment;
         const idempotency_key = paymentId;  // prevent duplicate charges
@@ -34,10 +35,12 @@ exports.stripeCharge = functions.database
         const charge = {amount, currency, source};
         return stripe.charges
           .create(charge, { idempotency_key })
+          // @ts-ignore
           .then((result)=>{
             return {charge: result, bikeId, from, to, amount};
           })
       })
+      // @ts-ignore
       .then(result => {
         const {charge, amount, bikeId, from, to} = result;
         admin.database()
