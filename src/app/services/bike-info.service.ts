@@ -30,6 +30,7 @@ export class BikeInfoService {
   }
 
   getBikesList() {
+    this.userId = this.authService.currentUser.uid;
     return this.db.list(this.bikePath, ref => ref.orderByChild('userId')
       .equalTo(this.userId)).snapshotChanges();
   }
