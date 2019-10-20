@@ -1,5 +1,4 @@
 {
-  "name": "bike-now-lviv",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -25,6 +24,7 @@
     "@angular/router": "~8.2.4",
     "@ngmodule/material-carousel": "^0.5.1",
     "@types/algoliasearch": "^3.34.3",
+    "algolia-search": "^2.0.1",
     "algoliasearch": "^3.35.1",
     "angular-instantsearch": "^2.2.2",
     "firebase": "^6.6.0",
