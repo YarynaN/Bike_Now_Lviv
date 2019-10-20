@@ -1,0 +1,40 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+
+.example-container {
+  width: 90%;
+  margin: 3% 1%;
+}
+
+table {
+  width: 100%;
+}
+
+.bike-img {
+  height: 100px;
+  width: 100px;
+  border: 1px solid lightgray;
+  border-radius: 5%;
+  margin: 10px 0;
+}
+
+.bike-characteristics {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bike-characteristics > div {
+  padding-bottom: 13px;
+}
+
+.bike-characteristics > div > p {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+
+.order {
+  background-color: #f0f5f5;
+}

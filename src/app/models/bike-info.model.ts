@@ -30,6 +30,7 @@ export interface WheelsBikes {
 
 export interface BikeInfo {
   id?: string;
+  userId?: string;
   images?: string[];
   brand: string;
   model: string;
@@ -42,4 +43,5 @@ export interface BikeInfo {
   brakes: string;
   diameter_wheels: string;
   price_rent: string;
+  reservations?: any[];
 }
