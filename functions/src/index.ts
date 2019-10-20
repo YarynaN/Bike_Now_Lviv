@@ -1,26 +1,14 @@
 import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
-admin.initializeApp();
-const env = functions.config();
-import * as algoliasearch from 'algoliasearch';
-// Initialize the Algolia Client
-const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
-const index = client.initIndex('qwe');
-exports.indexBike = functions.database  
-    .ref('bikes/{bikeId}')
-    .onCreate((snap, context) => {
-        const data = snap.val();
-        const objectID = snap.key;
-        // Add the data to the algolia index
-        return index.addObject({
-            objectID,
-            ...data
-        });
-    });
-exports.unindexBike = functions.database
-    .ref('bikes/{bikeId}')
-    .onDelete((snap, context) => {
-        const objectId = snap.key;
-        // Delete an ID from the index
-        return index.deleteObject(objectId);
-    });
+import {indexBike, unindexBike} from './search'
+import {stripeCharge} from './payment'
+import {app} from './bikePhotos'
+
+const admin = require('firebase-admin');
+
+// @ts-ignore-file
+admin.initializeApp(functions.config().firebase);
+
+exports.indexBike = indexBike;
+exports.unindexBike = unindexBike;
+exports.stripeCharge = stripeCharge;
+exports.app = functions.https.onRequest(app);

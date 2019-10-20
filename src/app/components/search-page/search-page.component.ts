@@ -14,6 +14,7 @@ export class SearchPageComponent {
   }
 
   showResults = false;
+  apiPath: any = environment.apiPath;
 
   constructor(private authService: AuthService) { }
 

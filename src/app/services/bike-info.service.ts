@@ -8,13 +8,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class BikeInfoService {
   bikesData: AngularFireList<any>;
-  private userId: string;
 
   private readonly bikePath: string = '/bikes';
 
+  get userId(): string {
+    return this.authService.currentUser.uid;
+  }
+
   constructor(private db: AngularFireDatabase, private authService: AuthService) {
     this.bikesData = this.db.list(this.bikePath);
-    this.userId = this.authService.currentUser.uid;
   }
 
   deleteBikeItem(id: string) {
@@ -30,8 +32,11 @@ export class BikeInfoService {
   }
 
   getBikesList() {
-    this.userId = this.authService.currentUser.uid;
     return this.db.list(this.bikePath, ref => ref.orderByChild('userId')
       .equalTo(this.userId)).snapshotChanges();
+  }
+
+  getBikeById(id: string) {
+    return this.db.object(`${this.bikePath}/${id}`).valueChanges();
   }
 }

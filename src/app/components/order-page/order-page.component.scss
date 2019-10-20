@@ -1,0 +1,40 @@
+.bike-order {
+  width: 50%;
+  margin: 2% 25%;
+}
+
+.order-form, mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.datepickers {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 150px;
+}
+
+.card-number {
+  text-align: center;
+}
+
+.your-amount, .expir-date, .security-code {
+  width: 80px;
+  text-align: center;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin: 1% 10%;
+}
+
+.blue-snackbar {
+  background: #2196F3;
+}

@@ -13,7 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* FormsModule */
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -40,12 +40,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 import { MatCardModule } from '@angular/material';
-import { AuthGuardService } from './services/auth-guard.service';
 import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
 import { GuestNavbarComponent } from './components/navigation/guest-navbar/guest-navbar.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { PersonalInfoService } from './services/personal-info.service';
-
+import { OrderPageComponent } from './components/order-page/order-page.component';
+/* Services */
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { PaymentService } from './services/payment.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -64,8 +67,8 @@ firebase.initializeApp(environment.firebase);
     BikeComponent,
     BikesInfoComponent,
     HistoryComponent,
-    ContactUsComponent
-
+    ContactUsComponent,
+    OrderPageComponent,
   ],
   imports: [
     NgAisModule,
@@ -83,8 +86,14 @@ firebase.initializeApp(environment.firebase);
     MatCardModule,
     MatSnackBarModule,
     MatCarouselModule.forRoot(),
+    FormsModule,
   ],
-  providers: [AuthGuardService, PersonalInfoService],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    PaymentService,
+    PersonalInfoService,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

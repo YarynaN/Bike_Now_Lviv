@@ -1,4 +1,4 @@
-<div *ngIf="userInfo.isLogged; then thenBlock else elseBlock"></div>
+<div *ngIf="isLogged | async; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
     <app-logged-navbar></app-logged-navbar>
 </ng-template>

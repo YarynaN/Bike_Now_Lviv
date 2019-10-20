@@ -7,14 +7,14 @@
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
             <li>
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="profile">
-                    {{info.userInfo.email}}
+                    {{info.userInfo && info.userInfo.email}}
                     <img class="avatar"
                         style='background-image: url(https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg)' />
                     <span class="caret">&#9660;</span>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before">
                     <button mat-menu-item routerLink="/my-account">My account</button>
-                    <button mat-menu-item routerLink="/" (click)="account.doLogout;">Sign out</button>
+                    <button mat-menu-item (click)="tryLogout()">Sign out</button>
                 </mat-menu>
             </li>
         </ul>
