@@ -110,4 +110,8 @@ export class OrderPageComponent implements OnInit {
   onPopstate() {
     this.handler.close();
   }
+
+  cancelOrder() {
+    this.router.navigate(['']);
+  }
 }
