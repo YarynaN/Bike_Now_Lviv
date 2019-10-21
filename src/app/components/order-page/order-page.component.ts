@@ -58,7 +58,7 @@ export class OrderPageComponent implements OnInit {
       token: token => {
         const {dateFrom, dateTo} = this.orderForm.value;
         const sDateFrom = dateFrom.toISOString();
-        const sDateTo = dateFrom.toISOString();
+        const sDateTo = dateTo.toISOString();
 
         this.paymentSvc.processOrder(token, this.totalAmount, this.bikeId, sDateFrom, sDateTo);
         this.router.navigate(['/']);
@@ -95,7 +95,7 @@ export class OrderPageComponent implements OnInit {
 
     const {dateFrom, dateTo} = this.orderForm.value;
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const diffDays = Math.round(Math.abs((dateTo - dateFrom) / oneDay));
+    const diffDays = Math.round(Math.abs((dateTo - dateFrom) / oneDay) + 1);
 
     this.totalAmount = diffDays * this.amount * 100;
 
