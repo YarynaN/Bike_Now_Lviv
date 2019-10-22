@@ -36,7 +36,7 @@
                             <div class="element-info">
                                 <div class="el-head">
                                     <h4 class="brand">
-                                        <ais-highlight attribute="brand" [hit]="hit"></ais-highlight>
+                                        {{hit.brand.split('-')[0]}}
                                     </h4>
                                     <p class="price">
                                         <b>{{hit.price_rent}} UAH/day </b>
@@ -46,18 +46,18 @@
                                     <div class="tech">
                                         <span class="param">Model: </span>{{hit.model}}
                                         <br>
-                                        <span class="param">Category: </span>{{hit.categories}}
+                                        <span class="param">Category: </span>{{hit.categories.split('-')[0]}}
                                         <br>
                                         <span class="param">Color: </span>
                                         <ais-highlight attribute="color" [hit]="hit"></ais-highlight>
                                         <br>
-                                        <span class="param">Wheels diameter: </span>{{hit.diameter_wheels}}
+                                        <span class="param">Wheels diameter: </span>{{hit.diameter_wheels.split('-')[0]}}
                                         <br>
                                         <span class="param">Speeds: </span>{{hit.speeds}}
                                         <br>
-                                        <span class="param">Brakes: </span>{{hit.brakes}}
+                                        <span class="param">Brakes: </span>{{hit.brakes.split('-')[0]}}
                                         <br>
-                                        <span class="param">Frames: </span> {{hit.frames}}
+                                        <span class="param">Frames: </span> {{hit.frames.split('-')[0]}}
                                         <br>
                                         <span class="param">Weight: </span>{{hit.weight}}
                                     </div>
