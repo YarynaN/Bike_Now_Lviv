@@ -69,8 +69,8 @@ export class HistoryComponent implements OnInit {
 
   private formatData(arr) {
     arr.forEach(item => {
-      item.from = moment(item.from).format('MM/DD/YYYY');
-      item.to = moment(item.to).format('MM/DD/YYYY');
+      item.dateFrom = moment(item.from).format('DD/MM/YYYY');
+      item.dateTo = moment(item.to).format('DD/MM/YYYY');
       item.amount /= 100;
     });
 
@@ -78,8 +78,10 @@ export class HistoryComponent implements OnInit {
   }
 
   private sortData(arr) {
-    arr.sort((a, b) => (new Date(a.from)).getTime() - (new Date(b.from)).getTime());
-    
+    arr.sort((a, b) => {
+      return (new Date(a.from)).getTime() - (new Date(b.from)).getTime()
+    });
+
     return arr;
   }
 

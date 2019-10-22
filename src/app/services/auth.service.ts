@@ -37,7 +37,7 @@ export class AuthService {
     });
   }
 
-  doSignIn(email: string, password: string) {
+  doSignIn(email: string, password: string): Promise<any> {
     this.doLogout();
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(email, password)
