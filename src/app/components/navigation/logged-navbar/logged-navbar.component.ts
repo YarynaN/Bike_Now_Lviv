@@ -16,12 +16,26 @@ export class LoggedNavbarComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private personalInfoService: PersonalInfoService
-  ) {}
+  ) { }
 
   get info() {
-    return {
-      userInfo: this.authService.currentUser
-    };
+    if (this.authService.currentUser) {
+      return {
+        userInfo: this.authService.currentUser
+      };
+    }
+  }
+  get getEmail() {
+    if (this.authService.currentUser && this.authService.currentUser.email) {
+      return this.authService.currentUser.email
+    }
+  }
+  get photo() {
+    if (this.personalInfo && this.personalInfo.photo) {
+      return this.personalInfo.photo;
+    } else {
+      return 'https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg'
+    }
   }
 
   ngOnInit() {

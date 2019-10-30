@@ -3,14 +3,13 @@
     <a mat-button routerLink="/my-account" routerLinkActive="active">My Account</a>
     <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
     <a mat-button routerLink="/contact-us" routerLinkActive="active">Contact us</a>
-    
+
     <div fxFlex fxLayout fxLayoutAlign="end">
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
             <li>
                 <button mat-button [matMenuTriggerFor]="beforeMenu" class="profile">
-                    {{info.userInfo && info.userInfo.email}}
-                    <img class="avatar" src="{{personalInfo.photo || 'https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg'}}"
-                        style='background-image: url(https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg)' />
+                    {{getEmail}}
+                    <img class="avatar" src="{{photo || 'https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg'}}" />
                     <span class="caret">&#9660;</span>
                 </button>
                 <mat-menu #beforeMenu="matMenu" xPosition="before">

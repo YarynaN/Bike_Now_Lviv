@@ -2,6 +2,7 @@
   padding: 20px 0;
   background-image: url("../../../assets/background2.jpg");
   background-size: cover;
+  
   .search {
     opacity: 0.9;
     margin: 0 auto;
@@ -9,6 +10,7 @@
     width: 1150px;
     background-color: white;
     border-radius: 10px;
+    border: 1px solid gainsboro;
     .search-container {
       display: flex;
       flex-direction: row;
